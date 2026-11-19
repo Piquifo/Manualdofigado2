@@ -46,7 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  padding-bottom: 76px; /* Espaço para barra fixa mobile */
+  padding-bottom: 0;
 }
 
 img {
@@ -140,22 +140,127 @@ button {
   color: var(--muted-dark);
 }
 
-/* Marca d'água discreta nos cantos */
+/* ==========================================================================
+   SELOS & MOCKUPS OFICIAIS DE MARCA (CONVENCIONAIS, NÍTIDOS & SEM SOBREPOSIÇÃO)
+   ========================================================================== */
 .card-watermark {
-  position: absolute;
-  bottom: 14px;
-  right: 16px;
-  width: 30px;
-  height: 30px;
-  opacity: 0.18;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-  transition: opacity 0.2s ease;
+  display: none !important; /* Desativa marcas d'água absolutas para nunca sobrepor textos dos cards */
 }
 
-.card-watermark-dark {
-  filter: invert(1) brightness(0.25) !important;
-  opacity: 0.12 !important;
+/* Selo de Cabeçalho de Seção (Centralizado, Nítido e Convencional) */
+.sec-brand-seal {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.sec-dark .sec-brand-seal {
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+}
+
+.sec-light .sec-brand-seal {
+  filter: drop-shadow(0 3px 10px rgba(13, 110, 68, 0.16));
+}
+
+/* Header & Hero Brand Logo */
+.site-brand-header {
+  background: var(--bg-dark);
+  padding: 24px 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.brand-header-logo,
+.hero-mockup-logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.hero-brand-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-badge-tag {
+  align-self: flex-start;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--emerald-bright);
+  color: var(--mint-light);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.hero-badge-sub {
+  font-size: 13px;
+  color: #B4CCC0;
+  font-weight: 500;
+}
+
+/* Offer Master Card Mockup Seal */
+.offer-mockup-seal {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(13, 110, 68, 0.18));
+}
+
+/* Footer Mockup */
+.footer-mockup-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 14px;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.55));
+}
+
+@media (max-width: 600px) {
+  .site-brand-header {
+    padding-top: 18px;
+  }
+
+  .brand-header-logo,
+  .hero-mockup-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .sec-brand-seal {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+
+  .offer-mockup-seal {
+    width: 76px;
+    height: 76px;
+  }
+
+  .footer-mockup-logo {
+    width: 68px;
+    height: 68px;
+  }
 }
 
 /* Botões Universais */
@@ -303,15 +408,15 @@ button {
 }
 
 .protocol-img-card {
-  background: #000000;
-  border: none;
+  background: #FFFFFF;
+  border: 1px solid #DCE7E1;
   border-radius: 20px;
   padding: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 32px rgba(12, 24, 18, 0.08);
   position: relative;
 }
 
@@ -323,7 +428,7 @@ button {
   object-fit: cover;
   display: block;
   border-radius: 20px;
-  background: #000000;
+  background: #FFFFFF;
 }
 
 .protocol-body {
@@ -1750,31 +1855,10 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   BARRA FIXA MOBILE FLUTUANTE (STICKY BAR)
+   BARRA FIXA MOBILE FLUTUANTE (STICKY BAR) - REMOVIDO
    -------------------------------------------------------------------------- */
 .sticky-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(12, 24, 18, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid #233F31;
-  padding: 10px 20px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  z-index: 999;
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.6);
-  transform: translateY(110%);
-  transition: transform 0.35s ease-in-out;
-}
-
-.sticky-bar.visible {
-  transform: translateY(0);
+  display: none !important;
 }
 
 .sticky-info {

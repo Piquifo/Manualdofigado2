@@ -67,7 +67,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  padding-bottom: 76px; /* Espaço para barra fixa mobile */
+  padding-bottom: 0;
 }
 
 img {
@@ -161,22 +161,127 @@ button {
   color: var(--muted-dark);
 }
 
-/* Marca d'água discreta nos cantos */
+/* ==========================================================================
+   SELOS & MOCKUPS OFICIAIS DE MARCA (CONVENCIONAIS, NÍTIDOS & SEM SOBREPOSIÇÃO)
+   ========================================================================== */
 .card-watermark {
-  position: absolute;
-  bottom: 14px;
-  right: 16px;
-  width: 30px;
-  height: 30px;
-  opacity: 0.18;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-  transition: opacity 0.2s ease;
+  display: none !important; /* Desativa marcas d'água absolutas para nunca sobrepor textos dos cards */
 }
 
-.card-watermark-dark {
-  filter: invert(1) brightness(0.25) !important;
-  opacity: 0.12 !important;
+/* Selo de Cabeçalho de Seção (Centralizado, Nítido e Convencional) */
+.sec-brand-seal {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.sec-dark .sec-brand-seal {
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+}
+
+.sec-light .sec-brand-seal {
+  filter: drop-shadow(0 3px 10px rgba(13, 110, 68, 0.16));
+}
+
+/* Header & Hero Brand Logo */
+.site-brand-header {
+  background: var(--bg-dark);
+  padding: 24px 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.brand-header-logo,
+.hero-mockup-logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.hero-brand-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-badge-tag {
+  align-self: flex-start;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--emerald-bright);
+  color: var(--mint-light);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.hero-badge-sub {
+  font-size: 13px;
+  color: #B4CCC0;
+  font-weight: 500;
+}
+
+/* Offer Master Card Mockup Seal */
+.offer-mockup-seal {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(13, 110, 68, 0.18));
+}
+
+/* Footer Mockup */
+.footer-mockup-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 14px;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.55));
+}
+
+@media (max-width: 600px) {
+  .site-brand-header {
+    padding-top: 18px;
+  }
+
+  .brand-header-logo,
+  .hero-mockup-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .sec-brand-seal {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+
+  .offer-mockup-seal {
+    width: 76px;
+    height: 76px;
+  }
+
+  .footer-mockup-logo {
+    width: 68px;
+    height: 68px;
+  }
 }
 
 /* Botões Universais */
@@ -324,15 +429,15 @@ button {
 }
 
 .protocol-img-card {
-  background: #000000;
-  border: none;
+  background: #FFFFFF;
+  border: 1px solid #DCE7E1;
   border-radius: 20px;
   padding: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 32px rgba(12, 24, 18, 0.08);
   position: relative;
 }
 
@@ -344,7 +449,7 @@ button {
   object-fit: cover;
   display: block;
   border-radius: 20px;
-  background: #000000;
+  background: #FFFFFF;
 }
 
 .protocol-body {
@@ -1771,31 +1876,10 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   BARRA FIXA MOBILE FLUTUANTE (STICKY BAR)
+   BARRA FIXA MOBILE FLUTUANTE (STICKY BAR) - REMOVIDO
    -------------------------------------------------------------------------- */
 .sticky-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(12, 24, 18, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid #233F31;
-  padding: 10px 20px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  z-index: 999;
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.6);
-  transform: translateY(110%);
-  transition: transform 0.35s ease-in-out;
-}
-
-.sticky-bar.visible {
-  transform: translateY(0);
+  display: none !important;
 }
 
 .sticky-info {
@@ -2028,6 +2112,7 @@ button {
     <section class="sec-light" id="protocolo" aria-labelledby="h-protocolo">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">01 / A Transformação</span>
           <h2 class="sec-title" id="h-protocolo">O que o Manual vai fazer</h2>
           <p class="sec-sub">Entenda como o método atua no seu organismo para reverter a sobrecarga de gordura e devolver a vitalidade natural do seu fígado passo a passo.</p>
@@ -2035,7 +2120,7 @@ button {
 
         <div class="protocol-grid">
           <div class="protocol-img-card">
-            <img src="images/ciclo-transformacao.png" alt="Ciclo de transformação: do fígado inflamado à restauração completa com o Manual" class="protocol-img" loading="lazy">
+            <img src="images/ciclo-transformacao.jpg" alt="Ciclo de transformação: do fígado inflamado à restauração completa com o Manual" class="protocol-img" loading="lazy">
           </div>
 
           <div class="protocol-body">
@@ -2059,6 +2144,7 @@ button {
     <section class="sec-dark" id="volumes" aria-labelledby="h-volumes">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-letras-claras.png" alt="Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">02 / Os 5 Guias Práticos</span>
           <h2 class="sec-title" id="h-volumes">Um Ecossistema Completo de Desintoxicação</h2>
           <p class="sec-sub">Tudo estruturado passo a passo, direto ao ponto. Cinco guias independentes e integrados que cobrem cada momento do seu dia:</p>
@@ -2083,7 +2169,6 @@ button {
                 Preparo prático de 5 a 10 minutos
               </li>
             </ul>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- 2: Almoço -->
@@ -2104,7 +2189,6 @@ button {
                 Acaba com a sonolência e o estufamento pós-almoço
               </li>
             </ul>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- 3: Janta -->
@@ -2125,7 +2209,6 @@ button {
                 Ativa a queima de gordura hepática durante o sono
               </li>
             </ul>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- 4: Exercícios -->
@@ -2146,7 +2229,6 @@ button {
                 Acelera o metabolismo sem cansaço extremo
               </li>
             </ul>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- 5: Bebidas -->
@@ -2167,7 +2249,7 @@ button {
                 Desincha o abdômen e melhora a disposição em 21 dias
               </li>
             </ul>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
+          </div>
           </div>
         </div>
       </div>
@@ -2179,6 +2261,7 @@ button {
     <section class="sec-light" id="depoimentos" aria-labelledby="h-depoimentos">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">03 / Prova Social</span>
           <h2 class="sec-title" id="h-depoimentos">Sorriso de quem teve resultado</h2>
           <p class="sec-sub">Pessoas reais que derreteram a gordura no fígado e se sentem bem novamente:</p>
@@ -2202,7 +2285,6 @@ button {
                 <h5>Marcos Aurélio, 54 anos</h5>
               </div>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
 
           <!-- Depoimento 2: Helena -->
@@ -2221,7 +2303,6 @@ button {
                 <h5>Helena Miranda, 42 anos</h5>
               </div>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
 
           <!-- Depoimento 3: Patrícia -->
@@ -2240,7 +2321,6 @@ button {
                 <h5>Patrícia Ramos, 48 anos</h5>
               </div>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
         </div>
       </div>
@@ -2252,6 +2332,7 @@ button {
     <section class="sec-light" id="bonus" aria-labelledby="h-bonus">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">04 / Bônus Gratuitos</span>
           <h2 class="sec-title" id="h-bonus">3 Presentes Especiais Liberados Gratuitamente Hoje</h2>
           <p class="sec-sub">Comprando hoje o Manual do Fígado Magro, você garante acesso completo a estes 3 guias complementares sem pagar nenhum centavo a mais:</p>
@@ -2265,7 +2346,6 @@ button {
               <img src="images/bonus-cardapio-30dias.jpg" alt="1º Bônus: Cardápio para 30 Dias" class="bonus-img" loading="lazy">
             </div>
             <h4>Cardápio para 30 Dias</h4>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
 
           <!-- Bônus 2 -->
@@ -2275,7 +2355,6 @@ button {
               <img src="images/bonus-sobremesas.jpg" alt="2º Bônus: Sobremesas Sem Açúcar" class="bonus-img" loading="lazy">
             </div>
             <h4>Sobremesas Sem Açúcar</h4>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
 
           <!-- Bônus 3 -->
@@ -2285,7 +2364,6 @@ button {
               <img src="images/bonus-alimentos-evitar.jpg" alt="3º Bônus: Guia Alimentos a Evitar" class="bonus-img" loading="lazy">
             </div>
             <h4>Guia Alimentos a Evitar</h4>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="24" height="24" loading="lazy">
           </div>
         </div>
       </div>
@@ -2392,7 +2470,6 @@ button {
             </span>
           </a>
         </div>
-        <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="28" height="28" loading="lazy">
       </div>
     </section>
 
@@ -2402,6 +2479,7 @@ button {
     <section class="sec-dark" id="entrega" aria-labelledby="h-entrega">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">06 / Entrega & Acesso</span>
           <h2 class="sec-title" id="h-entrega" style="color:#FFFFFF;">Tudo Pronto na Palma da Sua Mão</h2>
           <p class="sec-sub">Veja como é rápido, seguro e descomplicado receber o seu acesso:</p>
@@ -2415,7 +2493,6 @@ button {
             </svg>
             <h3>E-book Digital</h3>
             <p>Conteúdo direto ao ponto, organizado em PDF para ler e aplicar no mesmo dia.</p>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="22" height="22" loading="lazy">
           </div>
 
           <div class="delivery-card">
@@ -2425,7 +2502,6 @@ button {
             </svg>
             <h3>Lê no Celular</h3>
             <p>Abre em qualquer smartphone (Android ou iPhone), tablet ou computador. Pode imprimir se preferir.</p>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="22" height="22" loading="lazy">
           </div>
 
           <div class="delivery-card">
@@ -2434,7 +2510,6 @@ button {
             </svg>
             <h3>Acesso Imediato</h3>
             <p>Chega no seu e-mail e no seu WhatsApp assim que o pagamento for aprovado.</p>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="22" height="22" loading="lazy">
           </div>
 
           <div class="delivery-card">
@@ -2443,7 +2518,6 @@ button {
             </svg>
             <h3>100% Natural</h3>
             <p>Sem remédios ou pílulas milagrosas. Apenas comida de verdade acessível de qualquer feira.</p>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="22" height="22" loading="lazy">
           </div>
         </div>
       </div>
@@ -2455,6 +2529,7 @@ button {
     <section class="sec-light" id="praticidade" aria-labelledby="h-praticidade">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">07 / Praticidade Total</span>
           <h2 class="sec-title" id="h-praticidade">Cabe na palma da mão. E muda a saúde de todo o seu organismo.</h2>
           <p class="sec-sub">Sem enrolação, feito especificamente para quem tem pouco tempo e precisa de resultados rápidos.</p>
@@ -2485,6 +2560,7 @@ button {
     <section class="sec-dark" id="detalhes-bonus" aria-labelledby="h-detalhes-bonus">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">08 / Economia Real</span>
           <h2 class="sec-title" id="h-detalhes-bonus" style="color:#FFFFFF;">Detalhes dos Bônus que Você Vai Receber</h2>
           <p class="sec-sub">Veja exatamente tudo o que está incluso no pacote de hoje com a economia real de cada material:</p>
@@ -2501,7 +2577,6 @@ button {
               <span>Valor vendido separadamente: <del>R$ 47,00</del></span>
               <strong>HOJE: GRÁTIS</strong>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- Bônus 2 -->
@@ -2514,7 +2589,6 @@ button {
               <span>Valor vendido separadamente: <del>R$ 34,70</del></span>
               <strong>HOJE: GRÁTIS</strong>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- Bônus 3 -->
@@ -2527,7 +2601,6 @@ button {
               <span>Valor vendido separadamente: <del>R$ 34,00</del></span>
               <strong>HOJE: GRÁTIS</strong>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
         </div>
       </div>
@@ -2538,9 +2611,10 @@ button {
          ======================================================================== -->
     <section class="offer-section" id="oferta" aria-labelledby="h-oferta">
       <div class="offer-master-card">
+        <img src="images/mockup-verde-escuro.png" alt="Manual do Fígado Magro" class="offer-mockup-seal" loading="lazy">
         <h2 class="offer-title" id="h-oferta">Pronto para derreter a gordura no fígado?</h2>
 
-        <img loading="lazy" src="images/capa-mestre.jpg" alt="Coleção Completa: Manual do Fígado Magro" class="offer-cover">
+        <img loading="lazy" src="images/capa-oferta.jpg" alt="Manual do Fígado Magro - Livro Oficial" class="offer-cover">
 
         <div class="offer-table" aria-label="Discriminação de valores inclusos">
           <div class="offer-row"><span>Manual do Fígado Magro (Guia Mestre)</span><span class="offer-val">R$ 97,00</span></div>
@@ -2570,8 +2644,6 @@ button {
           <span>·</span>
           <span>🛡️ Garantia de 7 Dias</span>
         </div>
-
-        <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="28" height="28" loading="lazy">
       </div>
 
       <!-- Garantia Blindada -->
@@ -2595,6 +2667,7 @@ button {
     <section class="po-section" id="rotina-resultados" aria-labelledby="h-rotina-resultados">
       <div class="container">
         <div class="sec-head">
+          <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">09 / Transformação & Prática</span>
           <h2 class="sec-title" id="h-rotina-resultados" style="color:#FFFFFF;">Resultados Que Se Encaixam no Seu Dia</h2>
           <p class="sec-sub">Veja como é simples recomeçar e por que o método funciona mesmo na rotina mais corrida:</p>
@@ -2618,7 +2691,6 @@ button {
                 <p class="po-tri-desc">Receitas fáceis para dormir sem peso no estômago e ativar a queima noturna de gordura visceral.</p>
               </div>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark card-watermark-dark" alt="" width="30" height="30" loading="lazy">
           </div>
 
           <!-- 7.2 DEPOIMENTOS + 7.3 BOTAO DE COMPRA: O que ajudou na prática -->
@@ -2646,7 +2718,6 @@ button {
               <span class="po-dep-summary">Manual + 3 bônus • acesso imediato</span>
               <a href="#checkout" class="po-btn-outline">Começar com o manual por R$ 47,90 →</a>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
           </div>
 
           <!-- 7.4 COISAS BOAS DE TER COMPRADO O PRODUTO: Dá pra adaptar à sua rotina -->
@@ -2663,7 +2734,7 @@ button {
                 </ul>
               </div>
             </div>
-            <img src="images/logo-watermark.png" class="card-watermark" alt="" width="26" height="26" loading="lazy">
+          </div>
           </div>
 
           <!-- 7.5 BOTAO DE COMPRA: Volte a ter o fígado saudável que seu corpo precisa -->
@@ -2685,6 +2756,7 @@ button {
     <section class="faq-section" id="faq" aria-labelledby="h-faq">
       <div class="container-narrow">
         <div class="sec-head">
+          <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
           <span class="eyebrow">10 / Dúvidas Frequentes</span>
           <h2 class="sec-title" id="h-faq">Perguntas Frequentes</h2>
           <p class="sec-sub">Tudo o que você precisa saber antes de iniciar sua jornada de regeneração hepática:</p>
@@ -2811,6 +2883,7 @@ button {
        MÓDULO 13: RODAPÉ INSTITUCIONAL (DARK FOREST)
        ======================================================================== -->
   <footer class="footer">
+    <img src="images/mockup-letras-claras.png" alt="Manual do Fígado Magro" class="footer-mockup-logo" loading="lazy">
     <div class="footer-brand">MANUAL DO FÍGADO MAGRO</div>
     <p class="footer-desc">
       O método prático integrado de alimentação funcional, exercícios caseiros e bebidas desintoxicantes para restaurar
@@ -2827,15 +2900,6 @@ button {
       © 2026 Manual do Fígado Magro · Todos os direitos reservados.
     </div>
   </footer>
-
-  <!-- Barra Flutuante Mobile Fixa (Sticky Bar) -->
-  <div class="sticky-bar" aria-label="Barra de compra rápida mobile">
-    <div class="sticky-info">
-      <span class="sticky-title">Manual do Fígado Magro</span>
-      <span class="sticky-price">R$ 47,90 <span style="font-size:11px; color:#A3BFB2; font-weight:normal;">à vista</span></span>
-    </div>
-    <a href="#oferta" class="sticky-btn">Garantir Acesso</a>
-  </div>
 
   <script>
 // ==========================================================================
