@@ -35,6 +35,8 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -46,7 +48,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
   padding-bottom: 0;
+}
+
+button, a, input, select, summary {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -108,15 +116,7 @@ button {
 }
 
 .eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--emerald-bright);
-}
-
-.sec-light .eyebrow {
-  color: var(--primary);
+  display: none !important;
 }
 
 .sec-title {
@@ -559,8 +559,212 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   MÓDULO 4: RESULTADOS REAIS & PROVA SOCIAL (LIGHT CREAM)
+   NOVO MÓDULO: AMOSTRA DAS RECEITAS (CARROSSEL MARQUEE IMPARÁVEL)
    -------------------------------------------------------------------------- */
+.recipes-preview-section {
+  padding: 76px 0 84px;
+  background: var(--bg-dark);
+  color: var(--ink-light);
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--bg-dark-border);
+}
+
+.marquee-hint-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--mint-light);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin: 10px auto 0;
+  max-width: 90%;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-bright);
+  box-shadow: 0 0 10px var(--emerald-bright);
+  flex-shrink: 0;
+  animation: pulse-dot-anim 2s infinite;
+}
+
+@keyframes pulse-dot-anim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.recipes-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  gap: 22px;
+  padding: 24px 0 16px;
+  user-select: none;
+  pointer-events: none; /* Imagens ilustrativas não interativas */
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.recipes-marquee-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+  min-width: 100%;
+  animation: marquee-scroll-left 46s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 22px));
+  }
+}
+
+.recipe-card {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--bg-dark-card);
+  border: 1px solid var(--bg-dark-border);
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.recipe-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: #173024;
+  color: var(--mint-light);
+  border: 1px solid #284C3A;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.recipe-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 420 / 594;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.recipe-page-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   MÓDULO 4: RESULTADOS REAIS & PROVA SOCIAL (CARROSSEL HORIZONTAL)
+   -------------------------------------------------------------------------- */
+.testimonials-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.testimonials-carousel .car-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.testimonials-carousel .car-hint {
+  font-size: 13.5px;
+  color: var(--muted-dark);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.testimonials-carousel .car-hint::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-bright);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.testimonials-carousel .car-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-dark);
+  white-space: nowrap;
+}
+
+.testimonials-carousel .car-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid #D1E5DC;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(12, 24, 18, 0.05);
+}
+
+.testimonials-carousel .car-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(6, 78, 59, 0.2);
+}
+
+.testimonials-carousel .car-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
+
+.testimonials-carousel .results-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 20px;
+  padding: 6px 4px 22px;
+}
+
+.testimonials-carousel .results-track::-webkit-scrollbar {
+  display: none;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -571,7 +775,7 @@ button {
   background: #FFFFFF;
   border: 1px solid var(--bg-light-border);
   border-radius: 20px;
-  padding: 16px;
+  padding: 18px;
   box-shadow: 0 10px 30px rgba(12, 24, 18, 0.05);
   display: flex;
   flex-direction: column;
@@ -579,6 +783,10 @@ button {
   gap: 14px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: 310px;
+  max-width: 360px;
+  scroll-snap-align: start;
 }
 
 .result-card:hover {
@@ -2017,62 +2225,747 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVIDADE (MEDIA QUERIES)
+   RESPONSIVIDADE (MEDIA QUERIES - 100% MOBILE-FIRST UX)
    -------------------------------------------------------------------------- */
 @media (max-width: 860px) {
-  .protocol-grid, .palma-grid {
+  .protocol-grid, 
+  .palma-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .protocol-img, .palma-photo {
+  .protocol-img-card,
+  .protocol-img, 
+  .palma-photo {
     max-width: 320px;
+    margin: 0 auto;
+  }
+  .protocol-body,
+  .palma-content {
+    text-align: left;
+  }
+  .result-card {
+    flex: 0 0 calc(50% - 10px);
+    min-width: 280px;
   }
 }
 
 @media (max-width: 768px) {
+  /* Seções e Espaçamentos Verticais mais Confortáveis no Mobile */
+  .sec-dark,
+  .sec-light,
+  .compare-section,
+  .prints-section,
+  .offer-section,
+  .po-section,
+  .faq-section {
+    padding: 48px 16px;
+  }
+
+  .container,
+  .container-narrow {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  /* Cabeçalhos de Seção */
+  .sec-head {
+    margin-bottom: 24px;
+    gap: 6px;
+  }
+
+  .sec-brand-seal {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .sec-title {
+    font-size: clamp(23px, 6vw, 29px);
+    line-height: 1.22;
+  }
+
+  .sec-sub {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- Módulo 1: Hero Section ---------------- */
   .hero-section {
-    padding: 48px 16px 64px;
+    padding: 38px 16px 46px;
   }
+
   .hero-grid {
-    gap: 36px;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
   }
-  .po-tri-grid, .po-dep-grid, .po-rotina-flex {
+
+  .hero-content {
+    flex: 1 1 100%;
+    width: 100%;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(26px, 7.5vw, 36px);
+    line-height: 1.18;
+    text-align: center;
+  }
+
+  .hero-sub {
+    font-size: 15.5px;
+    line-height: 1.55;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .hero-actions .btn-cta {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-security {
+    justify-content: center;
+    gap: 8px 14px;
+    font-size: 12px;
+  }
+
+  .hero-mockup-wrap {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 300px;
+    margin: 4px auto 0;
+  }
+
+  .hero-mockup {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 14px;
+  }
+
+  /* ---------------- Módulo 2: O que o Manual vai fazer ---------------- */
+  .protocol-img-card {
+    max-width: 300px;
+    border-radius: 16px;
+  }
+
+  .protocol-body p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ---------------- Módulo 3: Os 5 Guias Práticos ---------------- */
+  .guides-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+    margin-top: 20px;
   }
+
+  .guide-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .guide-badge {
+    align-self: center;
+  }
+
+  .guide-cover {
+    max-width: 180px;
+  }
+
+  .guide-card-title {
+    font-size: 18px;
+  }
+
+  .guide-card-desc {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- NOVO MÓDULO: Amostra das Receitas (Marquee Mobile) ---------------- */
+  .recipes-preview-section {
+    padding: 48px 0 52px;
+  }
+
+  .recipes-marquee-wrap {
+    gap: 16px;
+    padding: 18px 0 14px;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  }
+
+  .recipes-marquee-group {
+    gap: 16px;
+    animation: marquee-scroll-left-mobile 36s linear infinite;
+  }
+
+  @keyframes marquee-scroll-left-mobile {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 16px));
+    }
+  }
+
+  .recipe-card {
+    width: 210px;
+    padding: 12px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .recipe-card-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+
+  .marquee-hint-badge {
+    font-size: 11.5px;
+    padding: 5px 12px;
+  }
+
+  /* ---------------- Módulo 4: Resultados Reais (Carrossel Mobile) ---------------- */
+  .testimonials-carousel .car-head {
+    margin-bottom: 12px;
+  }
+
+  .testimonials-carousel .car-hint {
+    font-size: 12px;
+  }
+
+  .testimonials-carousel .car-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .testimonials-carousel .results-track {
+    gap: 14px;
+    padding: 4px 2px 18px;
+  }
+
+  .result-card {
+    flex: 0 0 85%;
+    max-width: 310px;
+    scroll-snap-align: center;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .result-photo-wrap {
+    aspect-ratio: 4 / 5;
+    max-height: 380px;
+  }
+
+  .result-text {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ---------------- Módulo 5: Bônus Exclusivos ---------------- */
+  .bonuses-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .bonus-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bonus-badge {
+    align-self: center;
+  }
+
+  .bonus-img {
+    max-width: 180px;
+  }
+
+  .bonus-card h4 {
+    font-size: 18px;
+  }
+
+  /* ---------------- Módulo 6: Prints WhatsApp (Carrossel) ---------------- */
+  .prints-section {
+    padding: 44px 14px;
+  }
+
+  .s170 {
+    border-radius: 20px;
+  }
+
+  .s171 {
+    padding: 26px 16px 20px;
+    gap: 18px;
+  }
+
+  .car2 .car-head {
+    margin-bottom: 10px;
+  }
+
+  .car2 .s174 {
+    border-radius: 14px;
+  }
+
+  .car2 .s175 {
+    aspect-ratio: unset;
+    max-height: 460px;
+    object-fit: contain;
+    background: #EFEAE2;
+  }
+
+  .car2 .s176 {
+    font-size: 15px;
+    padding: 14px 16px 10px;
+  }
+
+  .s177 {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .s181 {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 14px;
+  }
+
+  .s182 {
+    padding: 16px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .s183 {
+    font-size: 12.5px;
+  }
+
+  .s184 {
+    min-width: unset;
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+
+  /* ---------------- Módulo 7: Entrega Digital ---------------- */
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .delivery-card {
+    padding: 18px 16px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .delivery-card h3 {
+    font-size: 18px;
+  }
+
+  .delivery-card p {
+    font-size: 13.5px;
+  }
+
+  /* ---------------- Módulo 8: Cabe na Palma da Mão ---------------- */
+  .palma-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .palma-photo {
+    max-width: 280px;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .palma-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .palma-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .palma-content .btn-cta {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  /* ---------------- Módulo 9: Detalhes dos Bônus ---------------- */
+  .bonus-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .bd-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .bd-cover {
+    max-width: 180px;
+  }
+
+  .bd-card h4 {
+    font-size: 18px;
+  }
+
+  .bd-card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- Módulo 10: Oferta Principal ---------------- */
+  .offer-section {
+    padding: 44px 14px;
+  }
+
+  .offer-master-card {
+    padding: 26px 16px;
+    border-radius: 20px;
+    gap: 16px;
+  }
+
+  .offer-title {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  .offer-cover {
+    max-width: 240px;
+    border-radius: 14px;
+  }
+
+  .offer-table {
+    margin-top: 4px;
+  }
+
+  .offer-row {
+    font-size: 13.5px;
+    padding: 8px 0;
+    gap: 10px;
+  }
+
+  .offer-row-total {
+    font-size: 14px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .offer-price-box {
+    margin: 2px 0;
+  }
+
+  .offer-price-label {
+    font-size: 14px;
+  }
+
+  .offer-price-main {
+    font-size: clamp(38px, 11vw, 50px);
+    line-height: 1.05;
+  }
+
+  .offer-price-inst {
+    font-size: 13.5px;
+  }
+
+  .offer-security-strip {
+    font-size: 12px;
+    gap: 6px 10px;
+  }
+
+  .guarantee-wrap {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .guarantee-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 17px;
+  }
+
+  .guarantee-text h4 {
+    font-size: 15px;
+  }
+
+  .guarantee-text p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* ---------------- Módulo 11: Resultados / Pós-Oferta ---------------- */
+  .po-section {
+    padding: 44px 16px;
+  }
+
+  .po-recomecar,
+  .po-depoimentos,
+  .po-rotina {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .po-title-serif {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .po-tri-grid,
+  .po-dep-grid,
+  .po-rotina-flex {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .po-box-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .po-dep-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .po-dep-text {
+    font-size: 14px;
+  }
+
   .po-dep-bar {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
+    gap: 10px;
+    padding-top: 14px;
   }
+
+  .po-dep-summary {
+    font-size: 13px;
+  }
+
   .po-btn-outline {
     width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 13.5px;
   }
-  .po-recomecar, .po-depoimentos, .po-rotina {
-    padding: 24px 20px;
+
+  .po-rotina-title {
+    font-size: 20px;
   }
+
+  .po-bullets li {
+    font-size: 14px;
+  }
+
+  .po-final-block {
+    padding: 18px 8px 8px;
+    gap: 14px;
+  }
+
+  .po-final-heading {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
   .po-final-btn {
-    padding: 14px 20px;
-    gap: 18px;
-  }
-  .guarantee-wrap {
-    flex-direction: column;
-    text-align: center;
-  }
-  .prints-section {
-    padding: 56px 16px;
-  }
-  .s171 {
-    padding: 32px 18px 24px;
-  }
-  .s182 {
-    padding: 18px;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
-  .s184 {
-    min-width: unset;
     width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .po-final-text {
+    font-size: 15px;
+  }
+
+  .po-final-price {
+    font-size: 13.5px;
+    padding: 4px 10px;
+  }
+
+  .po-final-micro {
+    font-size: 12px;
+  }
+
+  /* ---------------- Módulo 12: FAQ ---------------- */
+  .faq-section {
+    padding: 44px 16px;
+  }
+
+  .faq-item {
+    border-radius: 12px;
+  }
+
+  .faq-q {
+    padding: 14px 16px;
+    font-size: 14.5px;
+    gap: 10px;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .faq-a {
+    padding: 0 16px 14px;
+  }
+
+  .faq-a p {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  /* ---------------- Módulo 13: Rodapé ---------------- */
+  .footer {
+    padding: 38px 16px 48px;
+  }
+
+  .footer-mockup-logo {
+    max-width: 56px;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand {
+    font-size: 17px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+  }
+
+  /* ---------------- Botões Gerais (Thumb-Friendly Full Width) ---------------- */
+  .btn-cta {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px 18px;
+    font-size: 15.5px;
+    min-height: 52px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .btn-cta:active,
+  .po-final-btn:active,
+  .s184:active,
+  .po-btn-outline:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: SMARTPHONES COMPACTOS (<= 420px)
+   ========================================================================== */
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 25px;
+  }
+
+  .hero-sub {
+    font-size: 14.5px;
+  }
+
+  .btn-cta {
+    font-size: 14.5px;
+    padding: 15px 14px;
+  }
+
+  .offer-title {
+    font-size: 20px;
+  }
+
+  .offer-price-main {
+    font-size: 38px;
+  }
+
+  .offer-row {
+    font-size: 12.5px;
+  }
+
+  .offer-row-total {
+    font-size: 13px;
+  }
+
+  .bd-anchor-original {
+    font-size: 12px;
+  }
+
+  .bd-anchor-price {
+    font-size: 13px;
+  }
+
+  .bd-anchor-today {
+    font-size: 12px;
+  }
+
+  .bd-anchor-badge {
+    font-size: 11.5px;
+    padding: 2px 7px;
+  }
+
+  .po-final-btn {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .result-card {
+    flex: 0 0 88%;
+    max-width: 290px;
+  }
+
+  .po-final-price {
+    font-size: 12.5px;
   }
 }

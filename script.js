@@ -214,16 +214,31 @@ function initPrintsCarousel() {
     const next = car.querySelector('.car-next');
     const count = car.querySelector('.car-count');
 
-    const getStep = () => slides[0].offsetWidth + 20;
+    const getStep = () => {
+      if (slides.length > 1) {
+        const diff = slides[1].offsetLeft - slides[0].offsetLeft;
+        if (diff > 0) return diff;
+      }
+      return slides[0].offsetWidth + 20;
+    };
 
     if (prev) {
       prev.addEventListener('click', () => {
-        track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        if (track.scrollLeft <= 10) {
+          track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        }
       });
     }
     if (next) {
       next.addEventListener('click', () => {
-        track.scrollBy({ left: getStep(), behavior: 'smooth' });
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 12;
+        if (atEnd) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: getStep(), behavior: 'smooth' });
+        }
       });
     }
 
@@ -231,8 +246,6 @@ function initPrintsCarousel() {
       const step = getStep();
       const i = Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
       if (count) count.textContent = `${i + 1} de ${slides.length}`;
-      if (prev) prev.disabled = track.scrollLeft < 8;
-      if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
     };
 
     track.addEventListener('scroll', update, { passive: true });
@@ -313,14 +326,28 @@ function initLightbox() {
     if (e.target !== lbImg) closeLb();
   });
 
-  // Gatilhos: clique no link de ampliar ou na própria imagem do print
+  // Gatilhos: clique no link de ampliar ou na própria imagem do print ou card de receita
   document.querySelectorAll('a.s181, img.s175, .lightbox-trigger').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      const card = el.closest('.s174');
-      const img = card ? card.querySelector('.s175') : el;
-      const src = el.tagName === 'A' ? el.getAttribute('href') : el.getAttribute('src');
-      openLb(src || img?.src, img?.alt);
+      let src = el.getAttribute('data-full');
+      let alt = el.getAttribute('data-alt');
+
+      if (!src) {
+        if (el.tagName === 'A') {
+          src = el.getAttribute('href');
+        } else if (el.tagName === 'IMG') {
+          src = el.getAttribute('src');
+          alt = el.getAttribute('alt');
+        } else {
+          const img = el.querySelector('img') || el.closest('.s174')?.querySelector('.s175');
+          if (img) {
+            src = img.getAttribute('src');
+            alt = img.getAttribute('alt');
+          }
+        }
+      }
+      openLb(src, alt);
     });
   });
 }

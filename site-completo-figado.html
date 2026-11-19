@@ -56,6 +56,8 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -67,7 +69,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
   padding-bottom: 0;
+}
+
+button, a, input, select, summary {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -129,15 +137,7 @@ button {
 }
 
 .eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--emerald-bright);
-}
-
-.sec-light .eyebrow {
-  color: var(--primary);
+  display: none !important;
 }
 
 .sec-title {
@@ -580,8 +580,212 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   MÓDULO 4: RESULTADOS REAIS & PROVA SOCIAL (LIGHT CREAM)
+   NOVO MÓDULO: AMOSTRA DAS RECEITAS (CARROSSEL MARQUEE IMPARÁVEL)
    -------------------------------------------------------------------------- */
+.recipes-preview-section {
+  padding: 76px 0 84px;
+  background: var(--bg-dark);
+  color: var(--ink-light);
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--bg-dark-border);
+}
+
+.marquee-hint-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--mint-light);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin: 10px auto 0;
+  max-width: 90%;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-bright);
+  box-shadow: 0 0 10px var(--emerald-bright);
+  flex-shrink: 0;
+  animation: pulse-dot-anim 2s infinite;
+}
+
+@keyframes pulse-dot-anim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.recipes-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  gap: 22px;
+  padding: 24px 0 16px;
+  user-select: none;
+  pointer-events: none; /* Imagens ilustrativas não interativas */
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.recipes-marquee-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+  min-width: 100%;
+  animation: marquee-scroll-left 46s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 22px));
+  }
+}
+
+.recipe-card {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--bg-dark-card);
+  border: 1px solid var(--bg-dark-border);
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.recipe-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: #173024;
+  color: var(--mint-light);
+  border: 1px solid #284C3A;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.recipe-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 420 / 594;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.recipe-page-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   MÓDULO 4: RESULTADOS REAIS & PROVA SOCIAL (CARROSSEL HORIZONTAL)
+   -------------------------------------------------------------------------- */
+.testimonials-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.testimonials-carousel .car-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.testimonials-carousel .car-hint {
+  font-size: 13.5px;
+  color: var(--muted-dark);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.testimonials-carousel .car-hint::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-bright);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.testimonials-carousel .car-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-dark);
+  white-space: nowrap;
+}
+
+.testimonials-carousel .car-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid #D1E5DC;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(12, 24, 18, 0.05);
+}
+
+.testimonials-carousel .car-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(6, 78, 59, 0.2);
+}
+
+.testimonials-carousel .car-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
+
+.testimonials-carousel .results-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 20px;
+  padding: 6px 4px 22px;
+}
+
+.testimonials-carousel .results-track::-webkit-scrollbar {
+  display: none;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -592,7 +796,7 @@ button {
   background: #FFFFFF;
   border: 1px solid var(--bg-light-border);
   border-radius: 20px;
-  padding: 16px;
+  padding: 18px;
   box-shadow: 0 10px 30px rgba(12, 24, 18, 0.05);
   display: flex;
   flex-direction: column;
@@ -600,6 +804,10 @@ button {
   gap: 14px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: 310px;
+  max-width: 360px;
+  scroll-snap-align: start;
 }
 
 .result-card:hover {
@@ -2038,63 +2246,748 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVIDADE (MEDIA QUERIES)
+   RESPONSIVIDADE (MEDIA QUERIES - 100% MOBILE-FIRST UX)
    -------------------------------------------------------------------------- */
 @media (max-width: 860px) {
-  .protocol-grid, .palma-grid {
+  .protocol-grid, 
+  .palma-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .protocol-img, .palma-photo {
+  .protocol-img-card,
+  .protocol-img, 
+  .palma-photo {
     max-width: 320px;
+    margin: 0 auto;
+  }
+  .protocol-body,
+  .palma-content {
+    text-align: left;
+  }
+  .result-card {
+    flex: 0 0 calc(50% - 10px);
+    min-width: 280px;
   }
 }
 
 @media (max-width: 768px) {
+  /* Seções e Espaçamentos Verticais mais Confortáveis no Mobile */
+  .sec-dark,
+  .sec-light,
+  .compare-section,
+  .prints-section,
+  .offer-section,
+  .po-section,
+  .faq-section {
+    padding: 48px 16px;
+  }
+
+  .container,
+  .container-narrow {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  /* Cabeçalhos de Seção */
+  .sec-head {
+    margin-bottom: 24px;
+    gap: 6px;
+  }
+
+  .sec-brand-seal {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .sec-title {
+    font-size: clamp(23px, 6vw, 29px);
+    line-height: 1.22;
+  }
+
+  .sec-sub {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- Módulo 1: Hero Section ---------------- */
   .hero-section {
-    padding: 48px 16px 64px;
+    padding: 38px 16px 46px;
   }
+
   .hero-grid {
-    gap: 36px;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
   }
-  .po-tri-grid, .po-dep-grid, .po-rotina-flex {
+
+  .hero-content {
+    flex: 1 1 100%;
+    width: 100%;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(26px, 7.5vw, 36px);
+    line-height: 1.18;
+    text-align: center;
+  }
+
+  .hero-sub {
+    font-size: 15.5px;
+    line-height: 1.55;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .hero-actions .btn-cta {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-security {
+    justify-content: center;
+    gap: 8px 14px;
+    font-size: 12px;
+  }
+
+  .hero-mockup-wrap {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 300px;
+    margin: 4px auto 0;
+  }
+
+  .hero-mockup {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 14px;
+  }
+
+  /* ---------------- Módulo 2: O que o Manual vai fazer ---------------- */
+  .protocol-img-card {
+    max-width: 300px;
+    border-radius: 16px;
+  }
+
+  .protocol-body p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ---------------- Módulo 3: Os 5 Guias Práticos ---------------- */
+  .guides-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+    margin-top: 20px;
   }
+
+  .guide-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .guide-badge {
+    align-self: center;
+  }
+
+  .guide-cover {
+    max-width: 180px;
+  }
+
+  .guide-card-title {
+    font-size: 18px;
+  }
+
+  .guide-card-desc {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- NOVO MÓDULO: Amostra das Receitas (Marquee Mobile) ---------------- */
+  .recipes-preview-section {
+    padding: 48px 0 52px;
+  }
+
+  .recipes-marquee-wrap {
+    gap: 16px;
+    padding: 18px 0 14px;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  }
+
+  .recipes-marquee-group {
+    gap: 16px;
+    animation: marquee-scroll-left-mobile 36s linear infinite;
+  }
+
+  @keyframes marquee-scroll-left-mobile {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 16px));
+    }
+  }
+
+  .recipe-card {
+    width: 210px;
+    padding: 12px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .recipe-card-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+
+  .marquee-hint-badge {
+    font-size: 11.5px;
+    padding: 5px 12px;
+  }
+
+  /* ---------------- Módulo 4: Resultados Reais (Carrossel Mobile) ---------------- */
+  .testimonials-carousel .car-head {
+    margin-bottom: 12px;
+  }
+
+  .testimonials-carousel .car-hint {
+    font-size: 12px;
+  }
+
+  .testimonials-carousel .car-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .testimonials-carousel .results-track {
+    gap: 14px;
+    padding: 4px 2px 18px;
+  }
+
+  .result-card {
+    flex: 0 0 85%;
+    max-width: 310px;
+    scroll-snap-align: center;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .result-photo-wrap {
+    aspect-ratio: 4 / 5;
+    max-height: 380px;
+  }
+
+  .result-text {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ---------------- Módulo 5: Bônus Exclusivos ---------------- */
+  .bonuses-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .bonus-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bonus-badge {
+    align-self: center;
+  }
+
+  .bonus-img {
+    max-width: 180px;
+  }
+
+  .bonus-card h4 {
+    font-size: 18px;
+  }
+
+  /* ---------------- Módulo 6: Prints WhatsApp (Carrossel) ---------------- */
+  .prints-section {
+    padding: 44px 14px;
+  }
+
+  .s170 {
+    border-radius: 20px;
+  }
+
+  .s171 {
+    padding: 26px 16px 20px;
+    gap: 18px;
+  }
+
+  .car2 .car-head {
+    margin-bottom: 10px;
+  }
+
+  .car2 .s174 {
+    border-radius: 14px;
+  }
+
+  .car2 .s175 {
+    aspect-ratio: unset;
+    max-height: 460px;
+    object-fit: contain;
+    background: #EFEAE2;
+  }
+
+  .car2 .s176 {
+    font-size: 15px;
+    padding: 14px 16px 10px;
+  }
+
+  .s177 {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .s181 {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 14px;
+  }
+
+  .s182 {
+    padding: 16px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .s183 {
+    font-size: 12.5px;
+  }
+
+  .s184 {
+    min-width: unset;
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+
+  /* ---------------- Módulo 7: Entrega Digital ---------------- */
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .delivery-card {
+    padding: 18px 16px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .delivery-card h3 {
+    font-size: 18px;
+  }
+
+  .delivery-card p {
+    font-size: 13.5px;
+  }
+
+  /* ---------------- Módulo 8: Cabe na Palma da Mão ---------------- */
+  .palma-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .palma-photo {
+    max-width: 280px;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .palma-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .palma-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .palma-content .btn-cta {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  /* ---------------- Módulo 9: Detalhes dos Bônus ---------------- */
+  .bonus-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .bd-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .bd-cover {
+    max-width: 180px;
+  }
+
+  .bd-card h4 {
+    font-size: 18px;
+  }
+
+  .bd-card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------------- Módulo 10: Oferta Principal ---------------- */
+  .offer-section {
+    padding: 44px 14px;
+  }
+
+  .offer-master-card {
+    padding: 26px 16px;
+    border-radius: 20px;
+    gap: 16px;
+  }
+
+  .offer-title {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  .offer-cover {
+    max-width: 240px;
+    border-radius: 14px;
+  }
+
+  .offer-table {
+    margin-top: 4px;
+  }
+
+  .offer-row {
+    font-size: 13.5px;
+    padding: 8px 0;
+    gap: 10px;
+  }
+
+  .offer-row-total {
+    font-size: 14px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .offer-price-box {
+    margin: 2px 0;
+  }
+
+  .offer-price-label {
+    font-size: 14px;
+  }
+
+  .offer-price-main {
+    font-size: clamp(38px, 11vw, 50px);
+    line-height: 1.05;
+  }
+
+  .offer-price-inst {
+    font-size: 13.5px;
+  }
+
+  .offer-security-strip {
+    font-size: 12px;
+    gap: 6px 10px;
+  }
+
+  .guarantee-wrap {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .guarantee-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 17px;
+  }
+
+  .guarantee-text h4 {
+    font-size: 15px;
+  }
+
+  .guarantee-text p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* ---------------- Módulo 11: Resultados / Pós-Oferta ---------------- */
+  .po-section {
+    padding: 44px 16px;
+  }
+
+  .po-recomecar,
+  .po-depoimentos,
+  .po-rotina {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .po-title-serif {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .po-tri-grid,
+  .po-dep-grid,
+  .po-rotina-flex {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .po-box-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .po-dep-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .po-dep-text {
+    font-size: 14px;
+  }
+
   .po-dep-bar {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
+    gap: 10px;
+    padding-top: 14px;
   }
+
+  .po-dep-summary {
+    font-size: 13px;
+  }
+
   .po-btn-outline {
     width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 13.5px;
   }
-  .po-recomecar, .po-depoimentos, .po-rotina {
-    padding: 24px 20px;
+
+  .po-rotina-title {
+    font-size: 20px;
   }
+
+  .po-bullets li {
+    font-size: 14px;
+  }
+
+  .po-final-block {
+    padding: 18px 8px 8px;
+    gap: 14px;
+  }
+
+  .po-final-heading {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
   .po-final-btn {
-    padding: 14px 20px;
-    gap: 18px;
-  }
-  .guarantee-wrap {
-    flex-direction: column;
-    text-align: center;
-  }
-  .prints-section {
-    padding: 56px 16px;
-  }
-  .s171 {
-    padding: 32px 18px 24px;
-  }
-  .s182 {
-    padding: 18px;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
-  .s184 {
-    min-width: unset;
     width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .po-final-text {
+    font-size: 15px;
+  }
+
+  .po-final-price {
+    font-size: 13.5px;
+    padding: 4px 10px;
+  }
+
+  .po-final-micro {
+    font-size: 12px;
+  }
+
+  /* ---------------- Módulo 12: FAQ ---------------- */
+  .faq-section {
+    padding: 44px 16px;
+  }
+
+  .faq-item {
+    border-radius: 12px;
+  }
+
+  .faq-q {
+    padding: 14px 16px;
+    font-size: 14.5px;
+    gap: 10px;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .faq-a {
+    padding: 0 16px 14px;
+  }
+
+  .faq-a p {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  /* ---------------- Módulo 13: Rodapé ---------------- */
+  .footer {
+    padding: 38px 16px 48px;
+  }
+
+  .footer-mockup-logo {
+    max-width: 56px;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand {
+    font-size: 17px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+  }
+
+  /* ---------------- Botões Gerais (Thumb-Friendly Full Width) ---------------- */
+  .btn-cta {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px 18px;
+    font-size: 15.5px;
+    min-height: 52px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .btn-cta:active,
+  .po-final-btn:active,
+  .s184:active,
+  .po-btn-outline:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: SMARTPHONES COMPACTOS (<= 420px)
+   ========================================================================== */
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 25px;
+  }
+
+  .hero-sub {
+    font-size: 14.5px;
+  }
+
+  .btn-cta {
+    font-size: 14.5px;
+    padding: 15px 14px;
+  }
+
+  .offer-title {
+    font-size: 20px;
+  }
+
+  .offer-price-main {
+    font-size: 38px;
+  }
+
+  .offer-row {
+    font-size: 12.5px;
+  }
+
+  .offer-row-total {
+    font-size: 13px;
+  }
+
+  .bd-anchor-original {
+    font-size: 12px;
+  }
+
+  .bd-anchor-price {
+    font-size: 13px;
+  }
+
+  .bd-anchor-today {
+    font-size: 12px;
+  }
+
+  .bd-anchor-badge {
+    font-size: 11.5px;
+    padding: 2px 7px;
+  }
+
+  .po-final-btn {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .result-card {
+    flex: 0 0 88%;
+    max-width: 290px;
+  }
+
+  .po-final-price {
+    font-size: 12.5px;
   }
 }
 
@@ -2162,7 +3055,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">01 / A Transformação</span>
           <h2 class="sec-title" id="h-protocolo">O que o Manual vai fazer</h2>
           <p class="sec-sub">Entenda como o método atua no seu organismo para reverter a sobrecarga de gordura e devolver a vitalidade natural do seu fígado passo a passo.</p>
         </div>
@@ -2194,7 +3086,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-letras-claras.png" alt="Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">02 / Os 5 Guias Práticos</span>
           <h2 class="sec-title" id="h-volumes">Um Ecossistema Completo de Desintoxicação</h2>
           <p class="sec-sub">Tudo estruturado passo a passo, direto ao ponto. Cinco guias independentes e integrados que cobrem cada momento do seu dia:</p>
         </div>
@@ -2305,69 +3196,309 @@ button {
     </section>
 
     <!-- ========================================================================
+         NOVO MÓDULO: AMOSTRA DAS RECEITAS / CARROSSEL CONTÍNUO IMPARÁVEL (DARK FOREST)
+         ======================================================================== -->
+    <section class="sec-dark recipes-preview-section" id="amostra-receitas" aria-labelledby="h-amostra-receitas">
+      <div class="container">
+        <div class="sec-head">
+          <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
+          <h2 class="sec-title" id="h-amostra-receitas" style="color:#FFFFFF;">Veja Como as Receitas São Por Dentro</h2>
+          <p class="sec-sub">Páginas reais do material que você vai receber no celular. Tudo ilustrado passo a passo, com ingredientes baratos e preparo de 5 a 20 minutos:</p>
+          <div class="marquee-hint-badge">
+            <span class="pulse-dot"></span>
+            <span>Amostras ilustrativas dos 5 e-books • Deslizando automaticamente</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee Infinito Imparável (Passa automaticamente da direita para a esquerda) -->
+      <div class="recipes-marquee-wrap" aria-roledescription="carrossel contínuo de receitas" aria-label="Amostra de páginas das receitas do Manual">
+        <!-- Grupo 1 -->
+        <div class="recipes-marquee-group">
+          <!-- 1: Café - Omelete -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">☕ Café da Manhã</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-cafe-omelete.jpg" alt="Receita de Café da Manhã: Omelete de espinafre e tomate" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 2: Café - Crepioca -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">☕ Café da Manhã</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-cafe-crepioca.jpg" alt="Receita de Café da Manhã: Crepioca de queijo branco e orégano" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 3: Almoço - Salada -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🥗 Almoço</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-almoco-salada.jpg" alt="Receita de Almoço: Salada de grão-de-bico com frango" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 4: Almoço - Frango ao Forno -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🥗 Almoço</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-almoco-frango.jpg" alt="Receita de Almoço: Frango ao forno com batata e cenoura" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 5: Jantar - Bowl de Quinoa -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-quinoa.jpg" alt="Receita de Jantar: Bowl de quinoa, grão-de-bico e folhas" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 6: Jantar - Abobrinha Recheada -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-abobrinha.jpg" alt="Receita de Jantar: Abobrinha recheada com frango" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 7: Jantar - Peixe Ensopado -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-peixe.jpg" alt="Receita de Jantar: Peixe ensopado com legumes" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 8: Bebidas - Suco Cenoura Laranja -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍹 Bebidas</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-bebida-cenoura.jpg" alt="Receita de Bebidas: Bebida de Cenoura com Laranja" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 9: Bebidas - Chá Gelado de Limão -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍹 Bebidas</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-bebida-cha.jpg" alt="Receita de Bebidas: Chá Gelado de Limão sem Açúcar" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Grupo 2 (Duplicado para loop infinito sem interrupções) -->
+        <div class="recipes-marquee-group" aria-hidden="true">
+          <!-- 1: Café - Omelete -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">☕ Café da Manhã</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-cafe-omelete.jpg" alt="Receita de Café da Manhã: Omelete de espinafre e tomate" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 2: Café - Crepioca -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">☕ Café da Manhã</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-cafe-crepioca.jpg" alt="Receita de Café da Manhã: Crepioca de queijo branco e orégano" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 3: Almoço - Salada -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🥗 Almoço</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-almoco-salada.jpg" alt="Receita de Almoço: Salada de grão-de-bico com frango" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 4: Almoço - Frango ao Forno -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🥗 Almoço</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-almoco-frango.jpg" alt="Receita de Almoço: Frango ao forno com batata e cenoura" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 5: Jantar - Bowl de Quinoa -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-quinoa.jpg" alt="Receita de Jantar: Bowl de quinoa, grão-de-bico e folhas" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 6: Jantar - Abobrinha Recheada -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-abobrinha.jpg" alt="Receita de Jantar: Abobrinha recheada com frango" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 7: Jantar - Peixe Ensopado -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍲 Jantar</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-janta-peixe.jpg" alt="Receita de Jantar: Peixe ensopado com legumes" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 8: Bebidas - Suco Cenoura Laranja -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍹 Bebidas</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-bebida-cenoura.jpg" alt="Receita de Bebidas: Bebida de Cenoura com Laranja" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 9: Bebidas - Chá Gelado de Limão -->
+          <div class="recipe-card">
+            <span class="recipe-card-badge">🍹 Bebidas</span>
+            <div class="recipe-card-img-wrap">
+              <img src="images/receita-bebida-cha.jpg" alt="Receita de Bebidas: Chá Gelado de Limão sem Açúcar" class="recipe-page-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão de Ação -->
+      <div class="container" style="margin-top: 28px; text-align: center; padding: 0 16px;">
+        <a href="#oferta" class="btn-cta" style="max-width: 440px; margin: 0 auto;">Quero ter acesso a todas as receitas</a>
+      </div>
+    </section>
+
+    <!-- ========================================================================
          MÓDULO 4: RESULTADOS REAIS & PROVA SOCIAL (LIGHT CREAM)
          ======================================================================== -->
     <section class="sec-light" id="depoimentos" aria-labelledby="h-depoimentos">
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">03 / Prova Social</span>
           <h2 class="sec-title" id="h-depoimentos">Sorriso de quem teve resultado</h2>
           <p class="sec-sub">Pessoas reais que derreteram a gordura no fígado e se sentem bem novamente:</p>
         </div>
 
-        <div class="results-grid">
-          <!-- Depoimento 1: Marcos -->
-          <div class="result-card">
-            <div class="result-photo-wrap">
-              <img src="images/depoimento-foto-1.jpg" alt="Marcos Aurélio com o Manual do Fígado Magro" class="result-photo" loading="lazy">
-              <span class="result-photo-badge">Aluno Verificado ✓</span>
-            </div>
-            <div class="result-stars">★★★★★</div>
-            <p class="result-text">
-              “No meu último ultrassom, o médico conferiu a tela duas vezes: A gordura no fígado estava em Grau 3 e
-              sumiu completamente! As receitas de almoço são fáceis e as bebidas desincharam minha barriga em 10 dias.
-              Valeu cada centavo!”
-            </p>
-            <div class="result-author">
-              <div class="result-info">
-                <h5>Marcos Aurélio, 54 anos</h5>
-              </div>
+        <div class="carousel testimonials-carousel" aria-roledescription="carrossel" aria-label="Depoimentos de Alunos com Foto">
+          <div class="car-head">
+            <span class="car-hint">Deslize para ver todos os depoimentos</span>
+            <div class="car-nav">
+              <button type="button" class="car-btn car-prev" aria-label="Depoimento anterior">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path>
+                </svg>
+              </button>
+              <span class="car-count" aria-live="polite">1 de 6</span>
+              <button type="button" class="car-btn car-next" aria-label="Próximo depoimento">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path>
+                </svg>
+              </button>
             </div>
           </div>
 
-          <!-- Depoimento 2: Helena -->
-          <div class="result-card">
-            <div class="result-photo-wrap">
-              <img src="images/depoimento-foto-2.jpg" alt="Helena Miranda com o Manual do Fígado Magro" class="result-photo" loading="lazy">
-              <span class="result-photo-badge">Aluna Verificada ✓</span>
-            </div>
-            <div class="result-stars">★★★★★</div>
-            <p class="result-text">
-              “Eu acordava todos os dias com a boca amarga e sem energia. O guia de café da manhã e os exercícios fáceis
-              mudaram a minha rotina. Hoje durmo a noite inteira sem sentir o refluxo!”
-            </p>
-            <div class="result-author">
-              <div class="result-info">
-                <h5>Helena Miranda, 42 anos</h5>
+          <div class="car-track results-track">
+            <!-- Depoimento 1: Roberto -->
+            <div class="result-card" id="depoimento-1">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-1.jpg" alt="Roberto Silveira com o Guia Café da Manhã do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluno Verificado ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Eu acordava todo dia com a boca amarga, peso no estômago e sem disposição para nada. Quando comecei a seguir as receitas do Guia de Café da Manhã, em menos de duas semanas minha energia voltou e o amargor sumiu. No ultrassom recente, o médico confirmou: o fígado desinflamou!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Roberto Silveira, 52 anos</h5>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Depoimento 3: Patrícia -->
-          <div class="result-card">
-            <div class="result-photo-wrap">
-              <img src="images/depoimento-foto-3.jpg" alt="Patrícia Ramos com o Manual do Fígado Magro" class="result-photo" loading="lazy">
-              <span class="result-photo-badge">Aluna Verificada ✓</span>
+            <!-- Depoimento 2: Juliana -->
+            <div class="result-card" id="depoimento-2">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-2.jpg" alt="Juliana Mendes com o Guia de Almoço do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluna Verificada ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Na correria de trânsito e trabalho, eu comia qualquer besteira na rua e meu fígado foi para Grau 2 de esteatose. O Guia de Almoço salvou minha rotina: pratos deliciosos, rápidos e que não pesam na digestão. Minha barriga desinchou muito e perdi 4 kg sem sofrimento!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Juliana Mendes, 41 anos</h5>
+                </div>
+              </div>
             </div>
-            <div class="result-stars">★★★★★</div>
-            <p class="result-text">
-              “Meu TGP estava em 84 e o TGO em 76. Já estava apavorada com medo do fígado piorar. Usei os 5 guias do Manual
-              do Fígado Magro e quando repeti os exames depois de 3 semanas, as taxas normalizaram completamente.”
-            </p>
-            <div class="result-author">
-              <div class="result-info">
-                <h5>Patrícia Ramos, 48 anos</h5>
+
+            <!-- Depoimento 3: Mariana -->
+            <div class="result-card" id="depoimento-3">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-3.jpg" alt="Mariana Vasconcelos com o Guia de Bebidas do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluna Verificada ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “As bebidas detox do guia são maravilhosas! Troquei sucos de caixinha e refrigerantes pelos chás e infusões que derretem gordura. Em 10 dias a retenção líquida desapareceu e meu TGP, que estava muito elevado, normalizou totalmente no exame de sangue.”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Mariana Vasconcelos, 39 anos</h5>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 4: Patrícia -->
+            <div class="result-card" id="depoimento-4">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-4.jpg" alt="Patrícia Ramos com o Guia de Almoço do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluna Verificada ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Meu TGP estava em 84 e o TGO em 76. Já estava apavorada com medo do fígado piorar. Usei os 5 guias do Manual do Fígado Magro e quando repeti os exames depois de 3 semanas, as taxas normalizaram completamente. Valeu cada centavo investido!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Patrícia Ramos, 47 anos</h5>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 5: Carlos Eduardo -->
+            <div class="result-card" id="depoimento-5">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-5.jpg" alt="Carlos Eduardo com o Guia de Jantar do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluno Verificado ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Eu não conseguia dormir direito por causa do refluxo e daquela queimação após o jantar. As receitas do Guia de Jantar foram perfeitas: pratos leves, saborosos e que desinflamam o organismo à noite. Hoje durmo a noite toda com tranquilidade e sem azia!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Carlos Eduardo, 56 anos</h5>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 6: Sandra -->
+            <div class="result-card" id="depoimento-6">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-6.jpg" alt="Sandra Albuquerque com o Guia de Exercícios em Casa do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluna Verificada ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Sempre tive pavor de academia, mas os exercícios de 15 minutos em casa são extremamente práticos. Fazendo na sala e comendo as receitas do manual, a gordura visceral reduziu rápido e me sinto outra pessoa, com muito mais vitalidade e ânimo!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Sandra Albuquerque, 49 anos</h5>
+                </div>
               </div>
             </div>
           </div>
@@ -2382,7 +3513,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">04 / Bônus Gratuitos</span>
           <h2 class="sec-title" id="h-bonus">3 Presentes Especiais Liberados Gratuitamente Hoje</h2>
           <p class="sec-sub">Comprando hoje o Manual do Fígado Magro, você garante acesso completo a estes 3 guias complementares sem pagar nenhum centavo a mais:</p>
         </div>
@@ -2425,7 +3555,6 @@ button {
       <div class="s170">
         <div class="s171">
           <div>
-            <span class="eyebrow" style="color:var(--primary); margin-bottom:8px; display:inline-block;">05 / Provas no WhatsApp</span>
             <h2 class="sec-title" id="h-whatsapp" style="color:var(--ink-dark); font-size: clamp(24px, 3.2vw, 32px);">Depoimentos Espontâneos no WhatsApp</h2>
             <p class="prints-sub">Conversas reais enviadas por alunos no dia a dia. Toque na imagem para ampliar em tela cheia:</p>
           </div>
@@ -2529,7 +3658,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">06 / Entrega & Acesso</span>
           <h2 class="sec-title" id="h-entrega" style="color:#FFFFFF;">Tudo Pronto na Palma da Sua Mão</h2>
           <p class="sec-sub">Veja como é rápido, seguro e descomplicado receber o seu acesso:</p>
         </div>
@@ -2579,7 +3707,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">07 / Praticidade Total</span>
           <h2 class="sec-title" id="h-praticidade">Cabe na palma da mão. E muda a saúde de todo o seu organismo.</h2>
           <p class="sec-sub">Sem enrolação, feito especificamente para quem tem pouco tempo e precisa de resultados rápidos.</p>
         </div>
@@ -2610,7 +3737,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">08 / Economia Real</span>
           <h2 class="sec-title" id="h-detalhes-bonus" style="color:#FFFFFF;">Detalhes dos Bônus que Você Vai Receber</h2>
           <p class="sec-sub">Veja exatamente tudo o que está incluso no pacote de hoje com a economia real de cada material:</p>
         </div>
@@ -2735,7 +3861,6 @@ button {
       <div class="container">
         <div class="sec-head">
           <img src="images/mockup-letras-claras.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">09 / Transformação & Prática</span>
           <h2 class="sec-title" id="h-rotina-resultados" style="color:#FFFFFF;">Resultados Que Se Encaixam no Seu Dia</h2>
           <p class="sec-sub">Veja como é simples recomeçar e por que o método funciona mesmo na rotina mais corrida:</p>
         </div>
@@ -2824,7 +3949,6 @@ button {
       <div class="container-narrow">
         <div class="sec-head">
           <img src="images/mockup-verde-escuro.png" alt="Selo Oficial Manual do Fígado Magro" class="sec-brand-seal" loading="lazy">
-          <span class="eyebrow">10 / Dúvidas Frequentes</span>
           <h2 class="sec-title" id="h-faq">Perguntas Frequentes</h2>
           <p class="sec-sub">Tudo o que você precisa saber antes de iniciar sua jornada de regeneração hepática:</p>
         </div>
@@ -3185,16 +4309,31 @@ function initPrintsCarousel() {
     const next = car.querySelector('.car-next');
     const count = car.querySelector('.car-count');
 
-    const getStep = () => slides[0].offsetWidth + 20;
+    const getStep = () => {
+      if (slides.length > 1) {
+        const diff = slides[1].offsetLeft - slides[0].offsetLeft;
+        if (diff > 0) return diff;
+      }
+      return slides[0].offsetWidth + 20;
+    };
 
     if (prev) {
       prev.addEventListener('click', () => {
-        track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        if (track.scrollLeft <= 10) {
+          track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        }
       });
     }
     if (next) {
       next.addEventListener('click', () => {
-        track.scrollBy({ left: getStep(), behavior: 'smooth' });
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 12;
+        if (atEnd) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: getStep(), behavior: 'smooth' });
+        }
       });
     }
 
@@ -3202,8 +4341,6 @@ function initPrintsCarousel() {
       const step = getStep();
       const i = Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
       if (count) count.textContent = `${i + 1} de ${slides.length}`;
-      if (prev) prev.disabled = track.scrollLeft < 8;
-      if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
     };
 
     track.addEventListener('scroll', update, { passive: true });
@@ -3284,14 +4421,28 @@ function initLightbox() {
     if (e.target !== lbImg) closeLb();
   });
 
-  // Gatilhos: clique no link de ampliar ou na própria imagem do print
+  // Gatilhos: clique no link de ampliar ou na própria imagem do print ou card de receita
   document.querySelectorAll('a.s181, img.s175, .lightbox-trigger').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      const card = el.closest('.s174');
-      const img = card ? card.querySelector('.s175') : el;
-      const src = el.tagName === 'A' ? el.getAttribute('href') : el.getAttribute('src');
-      openLb(src || img?.src, img?.alt);
+      let src = el.getAttribute('data-full');
+      let alt = el.getAttribute('data-alt');
+
+      if (!src) {
+        if (el.tagName === 'A') {
+          src = el.getAttribute('href');
+        } else if (el.tagName === 'IMG') {
+          src = el.getAttribute('src');
+          alt = el.getAttribute('alt');
+        } else {
+          const img = el.querySelector('img') || el.closest('.s174')?.querySelector('.s175');
+          if (img) {
+            src = img.getAttribute('src');
+            alt = img.getAttribute('alt');
+          }
+        }
+      }
+      openLb(src, alt);
     });
   });
 }
