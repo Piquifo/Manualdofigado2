@@ -385,9 +385,8 @@ button {
 
 .hero-mockup {
   display: block;
-  width: min(340px, 100%);
+  width: min(380px, 100%);
   height: auto;
-  border-radius: 16px;
   filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.25));
   transition: transform 0.3s ease;
 }
@@ -455,21 +454,44 @@ button {
 /* --------------------------------------------------------------------------
    MÓDULO 3: OS 5 GUIAS PRÁTICOS (DARK FOREST)
    -------------------------------------------------------------------------- */
+.guides-hero-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px auto 30px;
+  max-width: 440px;
+}
+
+.guides-hero-mockup {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 22px 50px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.22));
+  transition: transform 0.3s ease;
+}
+
+.guides-hero-mockup:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
-  margin-top: 28px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .guide-card {
   background: var(--bg-dark-card);
   border: 1px solid var(--bg-dark-border);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: 14px;
+  padding: 14px 10px 16px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
@@ -477,85 +499,63 @@ button {
 .guide-card:hover {
   transform: translateY(-4px);
   border-color: var(--emerald-bright);
-  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
 }
 
 .guide-badge {
   display: inline-block;
-  align-self: flex-start;
   background: #173024;
   color: var(--mint-light);
   border: 1px solid #284C3A;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 9999px;
-  margin-bottom: 14px;
-  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  align-self: center;
 }
 
 .guide-img-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .guide-cover {
   width: 100%;
-  max-width: 200px;
+  max-width: 105px;
   aspect-ratio: 724 / 1024;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s ease;
 }
 
 .guide-card:hover .guide-cover {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .guide-card-title {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #FFFFFF;
   line-height: 1.25;
 }
 
 .guide-card-desc {
-  margin: 0 0 16px;
-  font-size: 14px;
+  margin: 0;
+  font-size: 12px;
   color: var(--muted-light);
-  line-height: 1.5;
-  flex-grow: 1;
+  line-height: 1.45;
 }
 
 .guide-highlights {
-  list-style: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 12px;
-  margin: auto 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.guide-highlights li {
-  font-size: 13px;
-  color: #D1E5DC;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.35;
-}
-
-.guide-highlights li svg {
-  color: var(--emerald-bright);
-  flex-shrink: 0;
-  margin-top: 2px;
+  display: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1570,11 +1570,10 @@ button {
 .offer-cover {
   display: block;
   width: 100%;
-  max-width: 320px;
+  max-width: 460px;
   height: auto;
   margin: 0 auto;
-  border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
 }
 
 .offer-table {
@@ -1708,7 +1707,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   MÓDULO 12: RESULTADOS, DEPOIMENTOS & ROTINA REAL (PÓS-OFERTA) (DARK FOREST)
+   MÓDULO 11: RESULTADOS, DEPOIMENTOS & ROTINA REAL (PÓS-OFERTA) (DARK FOREST)
    -------------------------------------------------------------------------- */
 .po-section {
   padding: 80px 20px;
@@ -1716,12 +1715,42 @@ button {
   color: var(--ink-light);
 }
 
+.po-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto 36px;
+}
+
+.po-mockup-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 90px;
+  align-self: center;
+}
+
+.po-mockup-img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 25px rgba(16, 185, 129, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.po-mockup-img:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
 .po-stack {
-  max-width: 960px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 22px;
+  width: 100%;
 }
 
 /* 7.1 RESULTADOS: Escolha por onde recomeçar */
@@ -2302,8 +2331,22 @@ button {
 
   .hero-grid {
     flex-direction: column;
-    gap: 26px;
+    gap: 22px;
     align-items: center;
+  }
+
+  .hero-mockup-wrap {
+    order: -1;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .hero-mockup {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   .hero-content {
@@ -2343,19 +2386,6 @@ button {
     font-size: 12px;
   }
 
-  .hero-mockup-wrap {
-    flex: 1 1 100%;
-    width: 100%;
-    max-width: 300px;
-    margin: 4px auto 0;
-  }
-
-  .hero-mockup {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 14px;
-  }
-
   /* ---------------- Módulo 2: O que o Manual vai fazer ---------------- */
   .protocol-img-card {
     max-width: 300px;
@@ -2368,34 +2398,44 @@ button {
   }
 
   /* ---------------- Módulo 3: Os 5 Guias Práticos ---------------- */
+  .guides-hero-wrap {
+    margin: 10px auto 20px;
+    max-width: 280px;
+  }
+
+  .guides-hero-mockup {
+    max-width: 250px;
+  }
+
   .guides-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .guides-grid .guide-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .guide-card {
-    padding: 22px 18px;
-    border-radius: 18px;
-    align-items: center;
-    text-align: center;
-  }
-
-  .guide-badge {
-    align-self: center;
+    padding: 12px 8px 14px;
+    border-radius: 12px;
   }
 
   .guide-cover {
-    max-width: 180px;
+    max-width: 85px;
   }
 
   .guide-card-title {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .guide-card-desc {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   /* ---------------- NOVO MÓDULO: Amostra das Receitas (Marquee Mobile) ---------------- */
@@ -2662,8 +2702,7 @@ button {
   }
 
   .offer-cover {
-    max-width: 240px;
-    border-radius: 14px;
+    max-width: 320px;
   }
 
   .offer-table {
@@ -2731,6 +2770,22 @@ button {
   /* ---------------- Módulo 11: Resultados / Pós-Oferta ---------------- */
   .po-section {
     padding: 44px 16px;
+  }
+
+  .po-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .po-mockup-col {
+    position: static;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .po-mockup-img {
+    max-width: 280px;
   }
 
   .po-recomecar,
@@ -2909,6 +2964,14 @@ button {
    BREAKPOINT: SMARTPHONES COMPACTOS (<= 420px)
    ========================================================================== */
 @media (max-width: 420px) {
+  .hero-mockup-wrap {
+    max-width: 210px;
+  }
+
+  .hero-mockup {
+    max-width: 195px;
+  }
+
   .hero-title {
     font-size: 25px;
   }

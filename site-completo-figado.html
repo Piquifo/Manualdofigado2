@@ -406,9 +406,8 @@ button {
 
 .hero-mockup {
   display: block;
-  width: min(340px, 100%);
+  width: min(380px, 100%);
   height: auto;
-  border-radius: 16px;
   filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.25));
   transition: transform 0.3s ease;
 }
@@ -476,21 +475,44 @@ button {
 /* --------------------------------------------------------------------------
    MÓDULO 3: OS 5 GUIAS PRÁTICOS (DARK FOREST)
    -------------------------------------------------------------------------- */
+.guides-hero-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px auto 30px;
+  max-width: 440px;
+}
+
+.guides-hero-mockup {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 22px 50px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.22));
+  transition: transform 0.3s ease;
+}
+
+.guides-hero-mockup:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
-  margin-top: 28px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .guide-card {
   background: var(--bg-dark-card);
   border: 1px solid var(--bg-dark-border);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: 14px;
+  padding: 14px 10px 16px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
@@ -498,85 +520,63 @@ button {
 .guide-card:hover {
   transform: translateY(-4px);
   border-color: var(--emerald-bright);
-  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
 }
 
 .guide-badge {
   display: inline-block;
-  align-self: flex-start;
   background: #173024;
   color: var(--mint-light);
   border: 1px solid #284C3A;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 9999px;
-  margin-bottom: 14px;
-  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  align-self: center;
 }
 
 .guide-img-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .guide-cover {
   width: 100%;
-  max-width: 200px;
+  max-width: 105px;
   aspect-ratio: 724 / 1024;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s ease;
 }
 
 .guide-card:hover .guide-cover {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .guide-card-title {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #FFFFFF;
   line-height: 1.25;
 }
 
 .guide-card-desc {
-  margin: 0 0 16px;
-  font-size: 14px;
+  margin: 0;
+  font-size: 12px;
   color: var(--muted-light);
-  line-height: 1.5;
-  flex-grow: 1;
+  line-height: 1.45;
 }
 
 .guide-highlights {
-  list-style: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 12px;
-  margin: auto 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.guide-highlights li {
-  font-size: 13px;
-  color: #D1E5DC;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.35;
-}
-
-.guide-highlights li svg {
-  color: var(--emerald-bright);
-  flex-shrink: 0;
-  margin-top: 2px;
+  display: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -1591,11 +1591,10 @@ button {
 .offer-cover {
   display: block;
   width: 100%;
-  max-width: 320px;
+  max-width: 460px;
   height: auto;
   margin: 0 auto;
-  border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
 }
 
 .offer-table {
@@ -1729,7 +1728,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   MÓDULO 12: RESULTADOS, DEPOIMENTOS & ROTINA REAL (PÓS-OFERTA) (DARK FOREST)
+   MÓDULO 11: RESULTADOS, DEPOIMENTOS & ROTINA REAL (PÓS-OFERTA) (DARK FOREST)
    -------------------------------------------------------------------------- */
 .po-section {
   padding: 80px 20px;
@@ -1737,12 +1736,42 @@ button {
   color: var(--ink-light);
 }
 
+.po-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto 36px;
+}
+
+.po-mockup-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 90px;
+  align-self: center;
+}
+
+.po-mockup-img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 25px rgba(16, 185, 129, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.po-mockup-img:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
 .po-stack {
-  max-width: 960px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 22px;
+  width: 100%;
 }
 
 /* 7.1 RESULTADOS: Escolha por onde recomeçar */
@@ -2323,8 +2352,22 @@ button {
 
   .hero-grid {
     flex-direction: column;
-    gap: 26px;
+    gap: 22px;
     align-items: center;
+  }
+
+  .hero-mockup-wrap {
+    order: -1;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .hero-mockup {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   .hero-content {
@@ -2364,19 +2407,6 @@ button {
     font-size: 12px;
   }
 
-  .hero-mockup-wrap {
-    flex: 1 1 100%;
-    width: 100%;
-    max-width: 300px;
-    margin: 4px auto 0;
-  }
-
-  .hero-mockup {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 14px;
-  }
-
   /* ---------------- Módulo 2: O que o Manual vai fazer ---------------- */
   .protocol-img-card {
     max-width: 300px;
@@ -2389,34 +2419,44 @@ button {
   }
 
   /* ---------------- Módulo 3: Os 5 Guias Práticos ---------------- */
+  .guides-hero-wrap {
+    margin: 10px auto 20px;
+    max-width: 280px;
+  }
+
+  .guides-hero-mockup {
+    max-width: 250px;
+  }
+
   .guides-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .guides-grid .guide-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .guide-card {
-    padding: 22px 18px;
-    border-radius: 18px;
-    align-items: center;
-    text-align: center;
-  }
-
-  .guide-badge {
-    align-self: center;
+    padding: 12px 8px 14px;
+    border-radius: 12px;
   }
 
   .guide-cover {
-    max-width: 180px;
+    max-width: 85px;
   }
 
   .guide-card-title {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .guide-card-desc {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   /* ---------------- NOVO MÓDULO: Amostra das Receitas (Marquee Mobile) ---------------- */
@@ -2683,8 +2723,7 @@ button {
   }
 
   .offer-cover {
-    max-width: 240px;
-    border-radius: 14px;
+    max-width: 320px;
   }
 
   .offer-table {
@@ -2752,6 +2791,22 @@ button {
   /* ---------------- Módulo 11: Resultados / Pós-Oferta ---------------- */
   .po-section {
     padding: 44px 16px;
+  }
+
+  .po-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .po-mockup-col {
+    position: static;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .po-mockup-img {
+    max-width: 280px;
   }
 
   .po-recomecar,
@@ -2930,6 +2985,14 @@ button {
    BREAKPOINT: SMARTPHONES COMPACTOS (<= 420px)
    ========================================================================== */
 @media (max-width: 420px) {
+  .hero-mockup-wrap {
+    max-width: 210px;
+  }
+
+  .hero-mockup {
+    max-width: 195px;
+  }
+
   .hero-title {
     font-size: 25px;
   }
@@ -3090,106 +3153,60 @@ button {
           <p class="sec-sub">Tudo estruturado passo a passo, direto ao ponto. Cinco guias independentes e integrados que cobrem cada momento do seu dia:</p>
         </div>
 
+        <!-- Mockup Central em Destaque -->
+        <div class="guides-hero-wrap">
+          <img src="images/mockup-5guias.png" alt="Coleção Completa dos 5 Guias Práticos e Manual do Fígado Magro" class="guides-hero-mockup" loading="lazy">
+        </div>
+
         <div class="guides-grid">
           <!-- 1: Café da Manhã -->
           <div class="guide-card">
-            <span class="guide-badge">Volume 1 · Manhã</span>
+            <span class="guide-badge">Vol. 1 · Manhã</span>
             <div class="guide-img-wrap">
-              <img src="images/cafe-da-manha.jpg" alt="1º Café da Manhã" class="guide-cover" loading="lazy">
+              <img src="images/cafe-da-manha.webp" alt="1º Café da Manhã" class="guide-cover" loading="lazy">
             </div>
-            <h3 class="guide-card-title">1º Café da Manhã Anti-Gordura</h3>
-            <p class="guide-card-desc">Receitas rápidas de 5 a 10 minutos que ativam a queima de gordura logo ao acordar, sem picos de glicose e sem pães refinados.</p>
-            <ul class="guide-highlights">
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Sem farinhas brancas ou açúcares inflamatórios
-              </li>
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Preparo prático de 5 a 10 minutos
-              </li>
-            </ul>
+            <h3 class="guide-card-title">1º Café da Manhã</h3>
+            <p class="guide-card-desc">Receitas rápidas que ativam a queima matinal sem picos de glicose.</p>
           </div>
 
           <!-- 2: Almoço -->
           <div class="guide-card">
-            <span class="guide-badge">Volume 2 · Tarde</span>
+            <span class="guide-badge">Vol. 2 · Tarde</span>
             <div class="guide-img-wrap">
-              <img src="images/almoco.jpg" alt="2º Almoço" class="guide-cover" loading="lazy">
+              <img src="images/almoco.webp" alt="2º Almoço" class="guide-cover" loading="lazy">
             </div>
-            <h3 class="guide-card-title">2º Almoço Desintoxicante</h3>
-            <p class="guide-card-desc">Combinações nutritivas com temperos funcionais que aceleram a digestão e impedem o armazenamento de gordura visceral após a refeição.</p>
-            <ul class="guide-highlights">
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Pratos saborosos com ingredientes do dia a dia
-              </li>
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Acaba com a sonolência e o estufamento pós-almoço
-              </li>
-            </ul>
+            <h3 class="guide-card-title">2º Almoço</h3>
+            <p class="guide-card-desc">Pratos que aceleram a digestão e barram a gordura visceral.</p>
           </div>
 
           <!-- 3: Janta -->
           <div class="guide-card">
-            <span class="guide-badge">Volume 3 · Noite</span>
+            <span class="guide-badge">Vol. 3 · Noite</span>
             <div class="guide-img-wrap">
-              <img src="images/janta.jpg" alt="3º Receitas de Janta" class="guide-cover" loading="lazy">
+              <img src="images/janta.webp" alt="3º Receitas de Janta" class="guide-cover" loading="lazy">
             </div>
-            <h3 class="guide-card-title">3º Receitas de Janta Leve Noturna</h3>
-            <p class="guide-card-desc">Refeições noturnas que não pesam no estômago e preparam o fígado para o ciclo biológico de regeneração celular profunda na madrugada.</p>
-            <ul class="guide-highlights">
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Refeições leves para dormir a noite inteira sem refluxo
-              </li>
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Ativa a queima de gordura hepática durante o sono
-              </li>
-            </ul>
+            <h3 class="guide-card-title">3º Janta Leve</h3>
+            <p class="guide-card-desc">Receitas leves para dormir sem refluxo e regenerar o fígado.</p>
           </div>
 
           <!-- 4: Exercícios -->
           <div class="guide-card">
-            <span class="guide-badge">Volume 4 · Movimento</span>
+            <span class="guide-badge">Vol. 4 · Movimento</span>
             <div class="guide-img-wrap">
-              <img src="images/exercicios.jpg" alt="4º Exercícios para Fazer em Casa" class="guide-cover" loading="lazy">
+              <img src="images/exercicios.webp" alt="4º Exercícios para Fazer em Casa" class="guide-cover" loading="lazy">
             </div>
-            <h3 class="guide-card-title">4º Exercícios para Fazer em Casa</h3>
-            <p class="guide-card-desc">Roteiros de 10 a 15 minutos de baixo impacto para fazer na sala, sem pesos, sem esteira e respeitando as suas articulações.</p>
-            <ul class="guide-highlights">
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Apenas 10 a 15 minutos sem sair de casa
-              </li>
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Acelera o metabolismo sem cansaço extremo
-              </li>
-            </ul>
+            <h3 class="guide-card-title">4º Exercícios</h3>
+            <p class="guide-card-desc">Treinos de 10 a 15 min de baixo impacto para fazer na sala.</p>
           </div>
 
           <!-- 5: Bebidas -->
           <div class="guide-card">
-            <span class="guide-badge">Volume 5 · Detox</span>
+            <span class="guide-badge">Vol. 5 · Detox</span>
             <div class="guide-img-wrap">
               <img src="images/bebidas.jpg" alt="5º Bebidas para Derreter a Gordura no Fígado" class="guide-cover" loading="lazy">
             </div>
-            <h3 class="guide-card-title">5º Bebidas para Derreter a Gordura</h3>
-            <p class="guide-card-desc">Chás, shots matinais e infusões com compostos bioativos comprovados que desintoxicam os hepatócitos e aceleram a eliminação de toxinas.</p>
-            <ul class="guide-highlights">
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Atinge a gordura acumulada nas vias biliares
-              </li>
-              <li>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                Desincha o abdômen e melhora a disposição em 21 dias
-              </li>
-            </ul>
-          </div>
+            <h3 class="guide-card-title">5º Bebidas Detox</h3>
+            <p class="guide-card-desc">Chás e shots metabólicos para eliminar toxinas acumuladas.</p>
           </div>
         </div>
       </div>
@@ -3390,7 +3407,7 @@ button {
                   <path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path>
                 </svg>
               </button>
-              <span class="car-count" aria-live="polite">1 de 6</span>
+              <span class="car-count" aria-live="polite">1 de 5</span>
               <button type="button" class="car-btn car-next" aria-label="Próximo depoimento">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path>
@@ -3417,61 +3434,27 @@ button {
               </div>
             </div>
 
-            <!-- Depoimento 2: Juliana -->
+            <!-- Depoimento 2: Beatriz -->
             <div class="result-card" id="depoimento-2">
               <div class="result-photo-wrap">
-                <img src="images/depoimento-foto-2.jpg" alt="Juliana Mendes com o Guia de Almoço do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <img src="images/depoimento-foto-2.jpg" alt="Beatriz Nogueira lendo o Manual do Fígado Magro no tablet" class="result-photo" loading="lazy">
                 <span class="result-photo-badge">Aluna Verificada ✓</span>
               </div>
               <div class="result-stars">★★★★★</div>
               <p class="result-text">
-                “Na correria de trânsito e trabalho, eu comia qualquer besteira na rua e meu fígado foi para Grau 2 de esteatose. O Guia de Almoço salvou minha rotina: pratos deliciosos, rápidos e que não pesam na digestão. Minha barriga desinchou muito e perdi 4 kg sem sofrimento!”
+                “Por trabalhar o dia todo sentada, eu vivia cansada, inchada e comia muito mal. Adorei que o manual tem receitas fáceis que abro direto no tablet. A panqueca de aveia virou meu café preferido! Em 15 dias meu estômago desinflamou e recuperei o foco no trabalho.”
               </p>
               <div class="result-author">
                 <div class="result-info">
-                  <h5>Juliana Mendes, 41 anos</h5>
+                  <h5>Beatriz Nogueira, 28 anos</h5>
                 </div>
               </div>
             </div>
 
-            <!-- Depoimento 3: Mariana -->
+            <!-- Depoimento 3: Carlos Eduardo -->
             <div class="result-card" id="depoimento-3">
               <div class="result-photo-wrap">
-                <img src="images/depoimento-foto-3.jpg" alt="Mariana Vasconcelos com o Guia de Bebidas do Manual do Fígado Magro" class="result-photo" loading="lazy">
-                <span class="result-photo-badge">Aluna Verificada ✓</span>
-              </div>
-              <div class="result-stars">★★★★★</div>
-              <p class="result-text">
-                “As bebidas detox do guia são maravilhosas! Troquei sucos de caixinha e refrigerantes pelos chás e infusões que derretem gordura. Em 10 dias a retenção líquida desapareceu e meu TGP, que estava muito elevado, normalizou totalmente no exame de sangue.”
-              </p>
-              <div class="result-author">
-                <div class="result-info">
-                  <h5>Mariana Vasconcelos, 39 anos</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Depoimento 4: Patrícia -->
-            <div class="result-card" id="depoimento-4">
-              <div class="result-photo-wrap">
-                <img src="images/depoimento-foto-4.jpg" alt="Patrícia Ramos com o Guia de Almoço do Manual do Fígado Magro" class="result-photo" loading="lazy">
-                <span class="result-photo-badge">Aluna Verificada ✓</span>
-              </div>
-              <div class="result-stars">★★★★★</div>
-              <p class="result-text">
-                “Meu TGP estava em 84 e o TGO em 76. Já estava apavorada com medo do fígado piorar. Usei os 5 guias do Manual do Fígado Magro e quando repeti os exames depois de 3 semanas, as taxas normalizaram completamente. Valeu cada centavo investido!”
-              </p>
-              <div class="result-author">
-                <div class="result-info">
-                  <h5>Patrícia Ramos, 47 anos</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Depoimento 5: Carlos Eduardo -->
-            <div class="result-card" id="depoimento-5">
-              <div class="result-photo-wrap">
-                <img src="images/depoimento-foto-5.jpg" alt="Carlos Eduardo com o Guia de Jantar do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <img src="images/depoimento-foto-3.jpg" alt="Carlos Eduardo com o Guia de Jantar do Manual do Fígado Magro" class="result-photo" loading="lazy">
                 <span class="result-photo-badge">Aluno Verificado ✓</span>
               </div>
               <div class="result-stars">★★★★★</div>
@@ -3485,19 +3468,36 @@ button {
               </div>
             </div>
 
-            <!-- Depoimento 6: Sandra -->
-            <div class="result-card" id="depoimento-6">
+            <!-- Depoimento 4: Mariana -->
+            <div class="result-card" id="depoimento-4">
               <div class="result-photo-wrap">
-                <img src="images/depoimento-foto-6.jpg" alt="Sandra Albuquerque com o Guia de Exercícios em Casa do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <img src="images/depoimento-foto-4.jpg" alt="Mariana Vasconcelos com o Guia de Bebidas do Manual do Fígado Magro" class="result-photo" loading="lazy">
                 <span class="result-photo-badge">Aluna Verificada ✓</span>
               </div>
               <div class="result-stars">★★★★★</div>
               <p class="result-text">
-                “Sempre tive pavor de academia, mas os exercícios de 15 minutos em casa são extremamente práticos. Fazendo na sala e comendo as receitas do manual, a gordura visceral reduziu rápido e me sinto outra pessoa, com muito mais vitalidade e ânimo!”
+                “As bebidas detox do guia são maravilhosas! Troquei sucos de caixinha e refrigerantes pelos chás e infusões que derretem gordura. Em 10 dias a retenção líquida desapareceu e meu TGP, que estava muito elevado, normalizou totalmente no exame de sangue.”
               </p>
               <div class="result-author">
                 <div class="result-info">
-                  <h5>Sandra Albuquerque, 49 anos</h5>
+                  <h5>Mariana Vasconcelos, 39 anos</h5>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depoimento 5: Patrícia -->
+            <div class="result-card" id="depoimento-5">
+              <div class="result-photo-wrap">
+                <img src="images/depoimento-foto-5.jpg" alt="Patrícia Ramos com o Guia de Almoço do Manual do Fígado Magro" class="result-photo" loading="lazy">
+                <span class="result-photo-badge">Aluna Verificada ✓</span>
+              </div>
+              <div class="result-stars">★★★★★</div>
+              <p class="result-text">
+                “Na correria entre filhos e trabalho, meu almoço era sempre um desastre e meu fígado foi para Grau 2 de esteatose. O Guia de Almoço salvou minha rotina: pratos deliciosos, rápidos e que não pesam na digestão. Minha barriga desinchou muito e perdi 4 kg sem sofrimento!”
+              </p>
+              <div class="result-author">
+                <div class="result-info">
+                  <h5>Patrícia Ramos, 44 anos</h5>
                 </div>
               </div>
             </div>
@@ -3713,7 +3713,7 @@ button {
 
         <div class="palma-grid">
           <div class="palma-photo-wrap">
-            <img src="images/mulher-celular.jpg" alt="Aluna segurando o celular com o Manual do Fígado Magro" class="palma-photo" loading="lazy">
+            <img src="images/mulher-celular.jpg" alt="Maria de Lourdes preparando receitas práticas do Manual do Fígado Magro na cozinha" class="palma-photo" loading="lazy">
           </div>
 
           <div class="palma-content">
@@ -3807,7 +3807,7 @@ button {
         <img src="images/mockup-verde-escuro.png" alt="Manual do Fígado Magro" class="offer-mockup-seal" loading="lazy">
         <h2 class="offer-title" id="h-oferta">Pronto para derreter a gordura no fígado?</h2>
 
-        <img loading="lazy" src="images/capa-oferta.jpg" alt="Manual do Fígado Magro - Livro Oficial" class="offer-cover">
+        <img loading="lazy" src="images/capa-oferta.png" alt="Manual do Fígado Magro - Coleção Completa Oficial" class="offer-cover">
 
         <div class="offer-table" aria-label="Discriminação de valores inclusos">
           <div class="offer-row"><span>Manual do Fígado Magro (Guia Mestre)</span><span class="offer-val">R$ 97,00</span></div>
@@ -3865,69 +3865,75 @@ button {
           <p class="sec-sub">Veja como é simples recomeçar e por que o método funciona mesmo na rotina mais corrida:</p>
         </div>
 
-        <div class="po-stack">
-          <!-- 7.1 RESULTADOS: Escolha por onde recomeçar -->
-          <div class="po-recomecar">
-            <h3 class="po-title-serif">Escolha por onde recomeçar.</h3>
-            <div class="po-tri-grid">
-              <div class="po-tri-item">
-                <div class="po-tri-head"><span class="po-arrow">↗</span> No primeiro café da manhã</div>
-                <p class="po-tri-desc">Substituições simples e saborosas que desinflamam o fígado logo ao acordar, sem passar fome.</p>
-              </div>
-              <div class="po-tri-item">
-                <div class="po-tri-head"><span class="po-arrow">↗</span> No meio da tarde sem inchaço</div>
-                <p class="po-tri-desc">Chás e bebidas metabólicas rápidas para cortar a azia, a digestão pesada e o cansaço do dia.</p>
-              </div>
-              <div class="po-tri-item">
-                <div class="po-tri-head"><span class="po-arrow">↗</span> No jantar leve e restaurador</div>
-                <p class="po-tri-desc">Receitas fáceis para dormir sem peso no estômago e ativar a queima noturna de gordura visceral.</p>
-              </div>
-            </div>
+        <div class="po-layout">
+          <div class="po-mockup-col">
+            <img src="images/mockup-rotina.png" alt="Manual do Fígado Magro e Guia de Receitas no Tablet" class="po-mockup-img" loading="lazy">
           </div>
 
-          <!-- 7.2 DEPOIMENTOS + 7.3 BOTAO DE COMPRA: O que ajudou na prática -->
-          <div class="po-depoimentos">
-            <h3 class="po-box-title">O que ajudou na prática.</h3>
-            <div class="po-dep-grid">
-              <div class="po-dep-card">
-                <p class="po-dep-text">“Eu vivia com a barriga inchada, azia todo dia e um desânimo que não passava. Fiz as trocas do manual e em 2 semanas meu abdômen murchou 5 cm. Meu médico elogiou o resultado do meu ultrassom.”</p>
-                <div class="po-dep-foot">
-                  <span class="po-dep-author">Juliana</span>
-                  <a href="#whatsapp" class="po-dep-link">Ver conversa completa ↗</a>
+          <div class="po-stack">
+            <!-- 7.1 RESULTADOS: Escolha por onde recomeçar -->
+            <div class="po-recomecar">
+              <h3 class="po-title-serif">Escolha por onde recomeçar.</h3>
+              <div class="po-tri-grid">
+                <div class="po-tri-item">
+                  <div class="po-tri-head"><span class="po-arrow">↗</span> No primeiro café da manhã</div>
+                  <p class="po-tri-desc">Substituições simples e saborosas que desinflamam o fígado logo ao acordar, sem passar fome.</p>
                 </div>
-              </div>
-              <div class="po-dep-card">
-                <p class="po-dep-text">“Comprei meio desconfiada, mas me surpreendi. É tudo bem explicado e dá pra colocar em prática sem complicação. Não precisei de nenhum remédio caro nem fazer dieta maluca.”</p>
-                <div class="po-dep-foot">
-                  <span class="po-dep-author">Nanda</span>
-                  <a href="#whatsapp" class="po-dep-link">Ver conversa completa ↗</a>
+                <div class="po-tri-item">
+                  <div class="po-tri-head"><span class="po-arrow">↗</span> No meio da tarde sem inchaço</div>
+                  <p class="po-tri-desc">Chás e bebidas metabólicas rápidas para cortar a azia, a digestão pesada e o cansaço do dia.</p>
+                </div>
+                <div class="po-tri-item">
+                  <div class="po-tri-head"><span class="po-arrow">↗</span> No jantar leve e restaurador</div>
+                  <p class="po-tri-desc">Receitas fáceis para dormir sem peso no estômago e ativar a queima noturna de gordura visceral.</p>
                 </div>
               </div>
             </div>
 
-            <!-- 7.3 BOTAO DE COMPRA -->
-            <div class="po-dep-bar">
-              <span class="po-dep-summary">Manual + 3 bônus • acesso imediato</span>
-              <a href="#checkout" class="po-btn-outline">Começar com o manual por R$ 47,90 →</a>
-            </div>
-          </div>
+            <!-- 7.2 DEPOIMENTOS + 7.3 BOTAO DE COMPRA: O que ajudou na prática -->
+            <div class="po-depoimentos">
+              <h3 class="po-box-title">O que ajudou na prática.</h3>
+              <div class="po-dep-grid">
+                <div class="po-dep-card">
+                  <p class="po-dep-text">“Eu vivia com a barriga inchada, azia todo dia e um desânimo que não passava. Fiz as trocas do manual e em 2 semanas meu abdômen murchou 5 cm. Meu médico elogiou o resultado do meu ultrassom.”</p>
+                  <div class="po-dep-foot">
+                    <span class="po-dep-author">Juliana</span>
+                    <a href="#whatsapp" class="po-dep-link">Ver conversa completa ↗</a>
+                  </div>
+                </div>
+                <div class="po-dep-card">
+                  <p class="po-dep-text">“Comprei meio desconfiada, mas me surpreendi. É tudo bem explicado e dá pra colocar em prática sem complicação. Não precisei de nenhum remédio caro nem fazer dieta maluca.”</p>
+                  <div class="po-dep-foot">
+                    <span class="po-dep-author">Nanda</span>
+                    <a href="#whatsapp" class="po-dep-link">Ver conversa completa ↗</a>
+                  </div>
+                </div>
+              </div>
 
-          <!-- 7.4 COISAS BOAS DE TER COMPRADO O PRODUTO: Dá pra adaptar à sua rotina -->
-          <div class="po-rotina">
-            <div class="po-rotina-flex">
-              <div class="po-rotina-col-left">
-                <h3 class="po-rotina-title">Dá pra adaptar à sua rotina.</h3>
+              <!-- 7.3 BOTAO DE COMPRA -->
+              <div class="po-dep-bar">
+                <span class="po-dep-summary">Manual + 3 bônus • acesso imediato</span>
+                <a href="#checkout" class="po-btn-outline">Começar com o manual por R$ 47,90 →</a>
               </div>
-              <div class="po-rotina-col-right">
-                <ul class="po-bullets">
-                  <li><span class="po-bullet-dot">•</span> <span>Cabe no intervalo do trabalho, no ônibus ou antes de dormir.</span></li>
-                  <li><span class="po-bullet-dot">•</span> <span>Nos dias corridos, faça só o café ou a bebida desintoxicante do dia.</span></li>
-                  <li><span class="po-bullet-dot">•</span> <span>Pausou? Retome de onde parou, sem começar do zero.</span></li>
-                </ul>
+            </div>
+
+            <!-- 7.4 COISAS BOAS DE TER COMPRADO O PRODUTO: Dá pra adaptar à sua rotina -->
+            <div class="po-rotina">
+              <div class="po-rotina-flex">
+                <div class="po-rotina-col-left">
+                  <h3 class="po-rotina-title">Dá pra adaptar à sua rotina.</h3>
+                </div>
+                <div class="po-rotina-col-right">
+                  <ul class="po-bullets">
+                    <li><span class="po-bullet-dot">•</span> <span>Cabe no intervalo do trabalho, no ônibus ou antes de dormir.</span></li>
+                    <li><span class="po-bullet-dot">•</span> <span>Nos dias corridos, faça só o café ou a bebida desintoxicante do dia.</span></li>
+                    <li><span class="po-bullet-dot">•</span> <span>Pausou? Retome de onde parou, sem começar do zero.</span></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
           <!-- 7.5 BOTAO DE COMPRA: Volte a ter o fígado saudável que seu corpo precisa -->
           <div class="po-final-block">
