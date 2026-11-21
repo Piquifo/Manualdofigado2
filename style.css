@@ -604,7 +604,7 @@ button {
   width: 100%;
   overflow: hidden;
   display: flex;
-  gap: 22px;
+  gap: 26px;
   padding: 24px 0 16px;
   user-select: none;
   pointer-events: none; /* Imagens ilustrativas não interativas */
@@ -616,9 +616,9 @@ button {
   flex-shrink: 0;
   display: flex;
   align-items: stretch;
-  gap: 22px;
+  gap: 26px;
   min-width: 100%;
-  animation: marquee-scroll-left 46s linear infinite;
+  animation: marquee-scroll-left 52s linear infinite;
   will-change: transform;
 }
 
@@ -627,21 +627,21 @@ button {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - 22px));
+    transform: translateX(calc(-100% - 26px));
   }
 }
 
 .recipe-card {
-  width: 250px;
+  width: 350px;
   flex-shrink: 0;
   background: var(--bg-dark-card);
   border: 1px solid var(--bg-dark-border);
-  border-radius: 18px;
-  padding: 12px;
+  border-radius: 20px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  gap: 10px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
 .recipe-card-badge {
@@ -661,8 +661,8 @@ button {
 .recipe-card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 420 / 594;
-  border-radius: 12px;
+  aspect-ratio: 454 / 642;
+  border-radius: 14px;
   overflow: hidden;
   background: #FFFFFF;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
@@ -2444,15 +2444,15 @@ button {
   }
 
   .recipes-marquee-wrap {
-    gap: 16px;
+    gap: 18px;
     padding: 18px 0 14px;
     mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   }
 
   .recipes-marquee-group {
-    gap: 16px;
-    animation: marquee-scroll-left-mobile 36s linear infinite;
+    gap: 18px;
+    animation: marquee-scroll-left-mobile 40s linear infinite;
   }
 
   @keyframes marquee-scroll-left-mobile {
@@ -2460,12 +2460,12 @@ button {
       transform: translateX(0);
     }
     to {
-      transform: translateX(calc(-100% - 16px));
+      transform: translateX(calc(-100% - 18px));
     }
   }
 
   .recipe-card {
-    width: 210px;
+    width: 285px;
     padding: 12px;
     border-radius: 16px;
     gap: 8px;
