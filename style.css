@@ -124,8 +124,13 @@ button {
   font-family: var(--font-serif);
   font-size: clamp(26px, 3.8vw, 38px);
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 600;
   color: inherit;
+}
+
+.sec-title strong,
+.sec-title b {
+  font-weight: 800;
 }
 
 .sec-sub {
